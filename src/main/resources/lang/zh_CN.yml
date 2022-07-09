@@ -1,0 +1,42 @@
+common-player-null: "玩家不在线或不存在，请等待玩家上线或是检查大小写"
+
+tp-send: "请求已发送。输入 /tpacancel {0} 取消请求"
+tp-has: "已有传送请求，输入 /tpacancel 取消请求"
+tp-self: "你不可以传送到你自己"
+tp-no-request: "没有待处理的请求"
+tp-player-no-request: "该玩家没有向你发出传送请求"
+tp-deny: "对方拒绝了你的请求"
+tp-deny-self: "你拒绝了对方的请求"
+tpa-accept:
+  - "对方同意了你的请求"
+  - "传送将在 {0} 秒内开始"
+tpa-accept-self: "你同意了对方的请求"
+tpa-receive:
+  - "{0} 想要传送到你这里"
+  - "输入 /tpaccept 来同意对方的请求"
+  - "输入 /tpdeny 来拒绝对方的请求"
+  - "传送将在 {1} 秒后过期"
+tpahere-receive:
+  - "{0} 想要你传送到他那里"
+  - "输入 /tpaccept 来同意对方的请求"
+  - "输入 /tpdeny 来拒绝对方的请求"
+  - "传送将在 {1} 秒后过期"
+tpahere-accept: "对方同意了你的请求"
+tpahere-accpet-self:
+  - "你同意了对方的请求"
+  - "传送将在 {0} 秒内开始"
+tpacancel-success: "已取消与 {0} 的传送请求"
+
+fly-set-enable: "你已设置 {0} 的飞行模式为 开启"
+fly-set-disable: "你已设置 {0} 的飞行模式为 关闭"
+fly-enable-other: "你的飞行模式已被 {0} 更改为 开启"
+fly-disable-other: "你的飞行模式已被 {0} 更改为 关闭"
+fly-enable: "你的飞行模式已设置为 开启"
+fly-disable: "你的飞行模式已设置为 关闭"
+
+tps: "服务器当前的TPS为：{0}"
+
+ping: "您当前的延迟为：{0}"
+
+message-join: "玩家{0}加入游戏，当前在线{1}人。"
+message-quit: "玩家{0}退出游戏，当前在线{1}人。"
