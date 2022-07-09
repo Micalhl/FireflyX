@@ -64,7 +64,7 @@ object TpCommand {
                     }
                     tpaData[target.uniqueId] = user.uniqueId
                     tpahere[target.uniqueId] = true
-                    user.sendLang("tp-send")
+                    user.sendLang("tp-send", name)
                     target.sendLang("tpahere-receive", user.name, Settings.teleportTime)
                     submit(delay = Settings.teleportTime * 20L) {
                         tpaData.remove(target.uniqueId)
