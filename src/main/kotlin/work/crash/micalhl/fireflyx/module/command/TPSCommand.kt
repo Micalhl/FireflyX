@@ -5,8 +5,7 @@ import taboolib.common.platform.Awake
 import taboolib.common.platform.ProxyCommandSender
 import taboolib.common.platform.command.command
 import taboolib.module.lang.sendLang
-import work.crash.micalhl.fireflyx.util.plugin
-import kotlin.math.roundToInt
+import work.crash.micalhl.fireflyx.util.getTPS
 
 object TPSCommand {
 
@@ -14,10 +13,7 @@ object TPSCommand {
     fun register() {
         command("tps") {
             execute<ProxyCommandSender> { user, _, _ ->
-                val console = plugin().server.javaClass.getDeclaredField("console")
-                val currentTPS = console.type.getDeclaredField("currentTPS")
-                val tps = 20.0.coerceAtMost((currentTPS.getDouble(plugin().server) * 10.0).roundToInt() / 10.0)
-                user.sendLang("tps", tps)
+                user.sendLang("tps", getTPS().joinToString(", "))
             }
         }
     }

@@ -15,7 +15,6 @@ taboolib {
     install("module-lang")
     install("module-ui")
     install("module-nms")
-    install("module-nms-util")
     install("platform-bukkit")
     classifier = null
     version = "6.0.9-25"

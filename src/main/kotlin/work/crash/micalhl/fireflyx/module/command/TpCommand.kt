@@ -36,9 +36,10 @@ object TpCommand {
                         return@execute
                     }
                     tpaData[target.uniqueId] = user.uniqueId
+                    tpahere[target.uniqueId] = false
                     user.sendLang("tp-send", name)
                     target.sendLang("tpa-receive", user.name, Settings.teleportTime)
-                    submit(delay = Settings.teleportTime * 1000L) {
+                    submit(delay = Settings.teleportTime * 20L) {
                         tpaData.remove(target.uniqueId)
                         tpahere.remove(target.uniqueId)
                     }
@@ -63,9 +64,9 @@ object TpCommand {
                     }
                     tpaData[target.uniqueId] = user.uniqueId
                     tpahere[target.uniqueId] = true
-                    user.sendLang("tp-send")
+                    user.sendLang("tp-send", name)
                     target.sendLang("tpahere-receive", user.name, Settings.teleportTime)
-                    submit(delay = Settings.teleportTime * 1000L) {
+                    submit(delay = Settings.teleportTime * 20L) {
                         tpaData.remove(target.uniqueId)
                         tpahere.remove(target.uniqueId)
                     }
@@ -124,13 +125,13 @@ object TpCommand {
                 if (tpahere[user.uniqueId]!!) {
                     user.sendLang("tpahere-accpet-self", Settings.teleportCD)
                     player.sendLang("tpahere-accept")
-                    submit(delay = Settings.teleportCD * 1000L) {
+                    submit(delay = Settings.teleportCD * 20L) {
                         user.teleport(player.location)
                     }
                 } else {
                     user.sendLang("tpa-accpet-self")
                     player.sendLang("tpa-accpet", Settings.teleportCD)
-                    submit(delay = Settings.teleportCD * 1000L) {
+                    submit(delay = Settings.teleportCD * 20L) {
                         player.teleport(user.location)
                     }
                 }
