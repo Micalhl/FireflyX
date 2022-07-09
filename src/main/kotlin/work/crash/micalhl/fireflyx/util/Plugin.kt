@@ -1,5 +1,9 @@
 package work.crash.micalhl.fireflyx.util
 
-import work.crash.micalhl.fireflyx.FireflyX
+import taboolib.module.nms.nmsClass
 
-fun plugin() = FireflyX.plugin
+fun getTPS(): DoubleArray {
+    val craftServer = nmsClass("MinecraftServer").getMethod("getServer").invoke(null)
+    val recentTps = craftServer.javaClass.getField("recentTps")
+    return cast<DoubleArray>(recentTps.get(craftServer)).onEach { "%.1f".format(it) }
+}
