@@ -11,7 +11,7 @@ import taboolib.module.lang.sendLang
 
 object FlyCommand {
 
-    @Awake(LifeCycle.ENABLE)
+    @Awake(LifeCycle.ACTIVE)
     fun register() {
         command(name = "fly", permission = "fireflyx.command.fly/") {
             dynamic(optional = true, commit = "player") {

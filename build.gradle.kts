@@ -18,10 +18,17 @@ taboolib {
     install("platform-bukkit")
     classifier = null
     version = "6.0.9-25"
+
+    description {
+        dependencies {
+            name("Vault")
+        }
+    }
 }
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {

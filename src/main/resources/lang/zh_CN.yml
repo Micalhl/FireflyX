@@ -40,3 +40,7 @@ ping: "您当前的延迟为：{0}"
 
 message-join: "玩家{0}加入游戏，当前在线{1}人。"
 message-quit: "玩家{0}退出游戏，当前在线{1}人。"
+
+economy-account-create: "已为 {0} 创建银行账户"
+economy-balance-other: "玩家 {0} 的账户余额为 {1}"
+economy-balance-self: "您的账户余额为 {0}"

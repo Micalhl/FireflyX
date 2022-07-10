@@ -8,7 +8,7 @@ import taboolib.module.lang.sendLang
 
 object PingCommand {
 
-    @Awake(LifeCycle.ENABLE)
+    @Awake(LifeCycle.ACTIVE)
     fun register() {
         command("ping") {
             execute<ProxyPlayer> { user, _, _ ->

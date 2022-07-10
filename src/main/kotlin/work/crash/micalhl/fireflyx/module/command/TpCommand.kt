@@ -17,7 +17,7 @@ object TpCommand {
     private val tpaData = hashMapOf<UUID, UUID>()
     private val tpahere = hashMapOf<UUID, Boolean>()
 
-    @Awake(LifeCycle.ENABLE)
+    @Awake(LifeCycle.ACTIVE)
     fun register() {
         command("tpa") {
             dynamic {

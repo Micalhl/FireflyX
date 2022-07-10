@@ -16,4 +16,12 @@ object Settings {
     var quitTipFix = true
         private set
 
+    @ConfigNode("FirstJoinMoney")
+    var firstJoinMoney = 100.0
+        private set
+
+    @ConfigNode("CurrencyName")
+    var currencyName = "硬币"
+        private set
+
 }

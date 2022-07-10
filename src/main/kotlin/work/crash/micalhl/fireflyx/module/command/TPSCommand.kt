@@ -9,7 +9,7 @@ import work.crash.micalhl.fireflyx.util.getTPS
 
 object TPSCommand {
 
-    @Awake(LifeCycle.ENABLE)
+    @Awake(LifeCycle.ACTIVE)
     fun register() {
         command("tps") {
             execute<ProxyCommandSender> { user, _, _ ->
