@@ -9,7 +9,7 @@ import work.crash.micalhl.fireflyx.module.config.Settings
 import java.io.File
 import java.util.UUID
 
-class Economy {
+class DatabaseEconomy {
 
     private val host = File(getDataFolder(), "economy.db").getHost()
 
