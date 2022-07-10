@@ -13,9 +13,9 @@ object FlyCommand {
 
     @Awake(LifeCycle.ACTIVE)
     fun register() {
-        command(name = "fly", permission = "fireflyx.command.fly/") {
+        command(name = "fly", permission = "fireflyx.command.fly") {
             dynamic(optional = true, commit = "player") {
-                suggestion<ProxyCommandSender> { _, _ ->
+                suggestion<ProxyCommandSender>(uncheck = true) { _, _ ->
                     onlinePlayers().map { it.name }
                 }
                 execute<ProxyCommandSender> { user, context, _ ->
