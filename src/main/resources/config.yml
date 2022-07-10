@@ -3,3 +3,4 @@ TeleportTime: 120
 QuitTipFix: true
 FirstJoinMoney: 100.0
 CurrencyName: "硬币"
+CaptchaIndex: 6

@@ -24,4 +24,8 @@ object Settings {
     var currencyName = "硬币"
         private set
 
+    @ConfigNode("CaptchaIndex")
+    var captchaIndex = 6
+        private set
+
 }

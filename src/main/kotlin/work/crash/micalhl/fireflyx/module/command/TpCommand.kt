@@ -20,7 +20,7 @@ object TpCommand {
     @Awake(LifeCycle.ACTIVE)
     fun register() {
         command("tpa") {
-            dynamic {
+            dynamic(commit = "player") {
                 suggestion<ProxyPlayer> { _, _ ->
                     onlinePlayers().map { it.name }
                 }
@@ -47,7 +47,7 @@ object TpCommand {
             }
         }
         command("tpahere") {
-            dynamic {
+            dynamic(commit = "player") {
                 suggestion<ProxyPlayer> { _, _ ->
                     onlinePlayers().map { it.name }
                 }
@@ -74,7 +74,7 @@ object TpCommand {
             }
         }
         command("tpacancel") {
-            dynamic {
+            dynamic(commit = "player") {
                 suggestion<ProxyPlayer> { user, _ ->
                     tpaData.getKeys(user.uniqueId).filter { getProxyPlayer(it) != null }
                         .map { getProxyPlayer(it)!!.name }
