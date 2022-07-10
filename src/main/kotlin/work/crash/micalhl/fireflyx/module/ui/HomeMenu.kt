@@ -1,35 +1,38 @@
 package work.crash.micalhl.fireflyx.module.ui
 
 import taboolib.common.platform.ProxyPlayer
+import taboolib.common5.Coerce
 import taboolib.library.xseries.XMaterial
 import taboolib.module.ui.openMenu
 import taboolib.module.ui.type.Linked
-import taboolib.platform.compat.getBalance
-import taboolib.platform.compat.hasAccount
 import taboolib.platform.util.buildItem
 import taboolib.platform.util.inventoryCenterSlots
-import work.crash.micalhl.fireflyx.util.plugin
+import work.crash.micalhl.fireflyx.api.FireflyXAPI
+import work.crash.micalhl.fireflyx.module.database.DatabaseHome
+import work.crash.micalhl.fireflyx.util.parseLocation
 import work.crash.micalhl.fireflyx.util.toBKPlayer
-import java.util.UUID
 
-object BalanceTop {
+object HomeMenu {
 
     fun open(user: ProxyPlayer) {
         user.toBKPlayer()!!.closeInventory()
-        user.toBKPlayer()!!.openMenu<Linked<UUID>>("") {
+        user.toBKPlayer()!!.openMenu<Linked<DatabaseHome.Home>>("") {
             rows(6)
             slots(inventoryCenterSlots)
             handLocked(true)
             elements {
-                plugin().server.offlinePlayers.map { it.uniqueId }
-                    .filter { plugin().server.getOfflinePlayer(it).hasAccount() }
-                    .sortedByDescending { plugin().server.getOfflinePlayer(it).getBalance() }
+                FireflyXAPI.databaseHome.get(user.uniqueId)
             }
-            onGenerate { _, element, index, _ ->
-                val player = plugin().server.getOfflinePlayer(element)
-                buildItem(XMaterial.PLAYER_HEAD) {
-                    name = "&c${index + 1} &f${player.name}"
-                    lore.add("&f${player.getBalance()}")
+            onGenerate { _, element, _, _ ->
+                val location = element.location.parseLocation()
+                buildItem(XMaterial.RED_BED) {
+                    name = "&3&l${element.name}"
+                    lore.addAll(listOf(
+                        "&f${location.world!!}",
+                        "&f${Coerce.format(location.x)}",
+                        "&f${Coerce.format(location.y)}",
+                        "&f${Coerce.format(location.z)}"
+                    ))
                     colored()
                 }
             }

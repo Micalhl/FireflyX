@@ -1,12 +1,9 @@
 package work.crash.micalhl.fireflyx.module.database
 
 import taboolib.common.platform.function.getDataFolder
-import taboolib.module.database.ColumnOptionSQLite
-import taboolib.module.database.ColumnTypeSQLite
-import taboolib.module.database.Table
-import taboolib.module.database.getHost
+import taboolib.module.database.*
 import java.io.File
-import java.util.UUID
+import java.util.*
 
 class DatabaseHome {
 
@@ -33,6 +30,23 @@ class DatabaseHome {
 
     init {
         table.workspace(dataSource) { createTable(true) }.run()
+    }
+
+    fun get(user: UUID): List<Home> {
+        val result = arrayListOf<Home>()
+        table.select(dataSource) {
+            rows("home", "name", "location")
+            where {
+                "user" eq user
+            }
+        }.firstOrNull {
+            // FIXME: 这里有一个遍历获取不到第一行数据的问题，我一时半会没想到解决办法，先凑合用吧。
+            result.add(Home(UUID.fromString(getString("home")), getString("name"), user, getString("location")))
+            while (next()) {
+                result.add(Home(UUID.fromString(getString("home")), getString("name"), user, getString("location")))
+            }
+        }
+        return result
     }
 
     fun get(name: String, user: UUID): Home? {

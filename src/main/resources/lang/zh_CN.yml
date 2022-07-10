@@ -37,8 +37,8 @@ tps: "&9&lFireflyX &a&l>> &f服务器前5分钟、10分钟、15分钟、20分钟
 
 ping: "&9&lFireflyX &a&l>> &f您当前的延迟为：&c{0}"
 
-message-join: "&9&lFireflyX &a&l>> &f玩家&a{0}加入游戏，当前在线&d{1}人。"
-message-quit: "&9&lFireflyX &a&l>> &f玩家&3{0}退出游戏，当前在线&d{1}人。"
+message-join: "&a玩家&3{0}&a加入游戏,当前在线&d{1}&a人."
+message-quit: "&7玩家&3{0}&7退出游戏,当前在线&d{1}&7人."
 
 economy-account-create: "&9&lFireflyX &a&l>> &f已为 &c{0} &f创建银行账户"
 economy-balance-other: "&9&lFireflyX &a&l>> &f玩家 &c{0} &f的账户余额为 &c{1} {2}"
@@ -51,3 +51,10 @@ captcha: "&9&lFireflyX &a&l>> &f验证码: &c{0}"
 captcha-cancel: "&9&lFireflyX &a&l>> &f您取消了操作"
 captcha-different: "&9&lFireflyX &e&l>> &f您输入了错误的验证码！请重新输入命令来重新操作"
 captcha-success: "&9&lFireflyX &a&l>> &f验证码正确"
+
+home-unknown: "&9&lFireflyX &e&l>> &f指定的家 &c{0} &f不存在"
+home-success: "&9&lFireflyX &a&l>> &f传送到家 &c{0}"
+
+sethome-success: "&9&lFireflyX &a&l>> &f已设置家 &c{0}"
+
+delhome-success: "&9&lFireflyX &a&l>> &f已删除家 &c{0}"
