@@ -20,6 +20,9 @@ taboolib {
     version = "6.0.9-25"
 
     description {
+        contributors {
+            name("Mical")
+        }
         dependencies {
             name("Vault")
         }
