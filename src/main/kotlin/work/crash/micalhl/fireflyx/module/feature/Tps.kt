@@ -1,4 +1,4 @@
-package work.crash.micalhl.fireflyx.module.command
+package work.crash.micalhl.fireflyx.module.feature
 
 import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
@@ -7,7 +7,7 @@ import taboolib.common.platform.command.command
 import taboolib.module.lang.sendLang
 import work.crash.micalhl.fireflyx.util.getTPS
 
-object TPSCommand {
+object Tps {
 
     @Awake(LifeCycle.ACTIVE)
     fun register() {

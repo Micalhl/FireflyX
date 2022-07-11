@@ -1,4 +1,4 @@
-package work.crash.micalhl.fireflyx.module.command
+package work.crash.micalhl.fireflyx.module.feature
 
 import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
@@ -9,7 +9,7 @@ import taboolib.common.platform.function.getProxyPlayer
 import taboolib.common.platform.function.onlinePlayers
 import taboolib.module.lang.sendLang
 
-object FlyCommand {
+object Fly {
 
     @Awake(LifeCycle.ACTIVE)
     fun register() {

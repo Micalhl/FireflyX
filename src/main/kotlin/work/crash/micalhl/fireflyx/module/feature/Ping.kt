@@ -1,4 +1,4 @@
-package work.crash.micalhl.fireflyx.module.command
+package work.crash.micalhl.fireflyx.module.feature
 
 import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
@@ -6,7 +6,7 @@ import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
 import taboolib.module.lang.sendLang
 
-object PingCommand {
+object Ping {
 
     @Awake(LifeCycle.ACTIVE)
     fun register() {

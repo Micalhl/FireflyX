@@ -1,4 +1,4 @@
-package work.crash.micalhl.fireflyx.module.listener
+package work.crash.micalhl.fireflyx.module.feature
 
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerQuitEvent
@@ -7,9 +7,9 @@ import taboolib.common.platform.event.SubscribeEvent
 import taboolib.common.platform.function.console
 import taboolib.common.platform.function.onlinePlayers
 import taboolib.module.lang.asLangText
-import work.crash.micalhl.fireflyx.module.config.Settings
+import work.crash.micalhl.fireflyx.api.FireflyXSettings
 
-object JoinQuitTipListener {
+object JoinQuitTip {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun e(e: PlayerJoinEvent) {
@@ -18,7 +18,7 @@ object JoinQuitTipListener {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun e(e: PlayerQuitEvent) {
-        e.quitMessage = console().asLangText("message-quit", e.player.name, if (Settings.quitTipFix) onlinePlayers().size - 1 else onlinePlayers().size)
+        e.quitMessage = console().asLangText("message-quit", e.player.name, if (FireflyXSettings.quitTipFix) onlinePlayers().size - 1 else onlinePlayers().size)
     }
 
 }

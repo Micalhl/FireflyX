@@ -1,7 +1,7 @@
 package work.crash.micalhl.fireflyx.util
 
 import taboolib.module.nms.nmsClass
-import work.crash.micalhl.fireflyx.FireflyX
+import taboolib.platform.BukkitPlugin
 
 fun getTPS(): List<Double> {
     val craftServer = nmsClass("MinecraftServer").getMethod("getServer").invoke(null)
@@ -12,4 +12,4 @@ fun getTPS(): List<Double> {
     return result
 }
 
-fun plugin() = FireflyX.plugin
+fun plugin() = BukkitPlugin.getInstance()

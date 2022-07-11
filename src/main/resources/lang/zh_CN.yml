@@ -58,3 +58,5 @@ home-success: "&9&lFireflyX &a&l>> &f传送到家 &c{0}"
 sethome-success: "&9&lFireflyX &a&l>> &f已设置家 &c{0}"
 
 delhome-success: "&9&lFireflyX &a&l>> &f已删除家 &c{0}"
+
+setspawn: "&9&lFireflyX &a&l>> &f已设置您脚下的位置为服务器出生点"

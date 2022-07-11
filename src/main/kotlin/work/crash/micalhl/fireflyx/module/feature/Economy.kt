@@ -1,4 +1,4 @@
-package work.crash.micalhl.fireflyx.module.listener
+package work.crash.micalhl.fireflyx.module.feature
 
 import org.bukkit.event.player.PlayerJoinEvent
 import taboolib.common.platform.event.EventPriority
@@ -8,7 +8,7 @@ import taboolib.module.lang.sendLang
 import taboolib.platform.compat.createAccount
 import taboolib.platform.compat.hasAccount
 
-object EconomyListener {
+object Economy {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun e(e: PlayerJoinEvent) {

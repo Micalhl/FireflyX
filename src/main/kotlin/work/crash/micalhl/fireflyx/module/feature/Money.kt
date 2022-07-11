@@ -1,4 +1,4 @@
-package work.crash.micalhl.fireflyx.module.command
+package work.crash.micalhl.fireflyx.module.feature
 
 import org.bukkit.conversations.ConversationFactory
 import taboolib.common.LifeCycle
@@ -15,7 +15,7 @@ import taboolib.platform.compat.getBalance
 import taboolib.platform.compat.hasAccount
 import taboolib.platform.compat.withdrawBalance
 import taboolib.platform.util.onlinePlayers
-import work.crash.micalhl.fireflyx.module.config.Settings
+import work.crash.micalhl.fireflyx.api.FireflyXSettings
 import work.crash.micalhl.fireflyx.module.conversation.CaptchaConversation
 import work.crash.micalhl.fireflyx.module.ui.BalanceTop
 import work.crash.micalhl.fireflyx.util.isDouble
@@ -23,7 +23,7 @@ import work.crash.micalhl.fireflyx.util.plugin
 import work.crash.micalhl.fireflyx.util.toBKPlayer
 import work.crash.micalhl.fireflyx.util.toOfflinePlayer
 
-object MoneyCommand {
+object Money {
 
     @Awake(LifeCycle.ACTIVE)
     fun register() {
@@ -39,11 +39,11 @@ object MoneyCommand {
                         user.sendLang("common-player-null")
                         return@execute
                     }
-                    user.sendLang("economy-balance-other", target.name, target.toOfflinePlayer().getBalance(), Settings.currencyName)
+                    user.sendLang("economy-balance-other", target.name, target.toOfflinePlayer().getBalance(), FireflyXSettings.currencyName)
                 }
             }
             execute<ProxyPlayer> { user, _, _ ->
-                user.sendLang("economy-balance-self", user.toOfflinePlayer().getBalance(), Settings.currencyName)
+                user.sendLang("economy-balance-self", user.toOfflinePlayer().getBalance(), FireflyXSettings.currencyName)
             }
         }
         command("pay") {
@@ -64,14 +64,14 @@ object MoneyCommand {
                             user.sendLang("economy-pay-failed")
                             return@execute
                         }
-                        user.sendLang("economy-pay-captcha", name, money, Settings.currencyName)
+                        user.sendLang("economy-pay-captcha", name, money, FireflyXSettings.currencyName)
                         ConversationFactory(plugin())
                             .withFirstPrompt(CaptchaConversation(user) {
                                 user.toOfflinePlayer().withdrawBalance(money.toDouble())
                                 player.toOfflinePlayer().depositBalance(money.toDouble())
                                 submit(delay = 1L, async = true) {
-                                    user.sendLang("economy-pay-success", name, money, Settings.currencyName)
-                                    player.sendLang("economy-pay-receive", user.name, money, Settings.currencyName)
+                                    user.sendLang("economy-pay-success", name, money, FireflyXSettings.currencyName)
+                                    player.sendLang("economy-pay-receive", user.name, money, FireflyXSettings.currencyName)
                                 }
                             })
                             .withLocalEcho(false)

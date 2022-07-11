@@ -1,13 +1,15 @@
-package work.crash.micalhl.fireflyx.compat
+package work.crash.micalhl.fireflyx.module.compat
 
 import net.milkbowl.vault.economy.AbstractEconomy
+import net.milkbowl.vault.economy.Economy
 import net.milkbowl.vault.economy.EconomyResponse
 import org.bukkit.OfflinePlayer
-import taboolib.module.chat.colored
+import org.bukkit.plugin.ServicePriority
+import taboolib.common.LifeCycle
+import taboolib.common.platform.Awake
 import work.crash.micalhl.fireflyx.api.FireflyXAPI
-import work.crash.micalhl.fireflyx.module.config.Settings
+import work.crash.micalhl.fireflyx.api.FireflyXSettings
 import work.crash.micalhl.fireflyx.util.plugin
-import java.math.BigDecimal
 import java.text.DecimalFormat
 
 @Suppress("deprecation")
@@ -30,7 +32,7 @@ class Vault : AbstractEconomy() {
 
     override fun currencyNamePlural(): String = currencyNameSingular()
 
-    override fun currencyNameSingular(): String = Settings.currencyName
+    override fun currencyNameSingular(): String = FireflyXSettings.currencyName
 
     override fun hasAccount(name: String): Boolean =
         FireflyXAPI.databaseEconomy.has(plugin().server.getOfflinePlayer(name).uniqueId)
@@ -136,6 +138,21 @@ class Vault : AbstractEconomy() {
 
     override fun createPlayerAccount(player: OfflinePlayer): Boolean {
         return createPlayerAccount(player.name!!)
+    }
+
+    companion object {
+
+        @Awake(LifeCycle.ENABLE)
+        fun hook() {
+            val provider = Vault()
+            plugin().server.servicesManager.register(Economy::class.java, provider, plugin(), ServicePriority.Normal)
+        }
+
+        @Awake(LifeCycle.DISABLE)
+        fun unhook() {
+            plugin().server.servicesManager.unregisterAll(plugin())
+        }
+
     }
 
 }

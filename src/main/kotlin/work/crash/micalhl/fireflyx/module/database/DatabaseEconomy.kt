@@ -5,7 +5,7 @@ import taboolib.module.database.ColumnOptionSQLite
 import taboolib.module.database.ColumnTypeSQLite
 import taboolib.module.database.Table
 import taboolib.module.database.getHost
-import work.crash.micalhl.fireflyx.module.config.Settings
+import work.crash.micalhl.fireflyx.api.FireflyXSettings
 import java.io.File
 import java.util.UUID
 
@@ -36,7 +36,7 @@ class DatabaseEconomy {
         }
     }
 
-    fun create(user: UUID, economy: Double = Settings.firstJoinMoney) {
+    fun create(user: UUID, economy: Double = FireflyXSettings.firstJoinMoney) {
         table.insert(dataSource, "user", "economy") {
             value(user, economy)
         }

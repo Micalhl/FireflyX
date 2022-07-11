@@ -1,4 +1,4 @@
-package work.crash.micalhl.fireflyx.module.command
+package work.crash.micalhl.fireflyx.module.feature
 
 import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
@@ -8,11 +8,11 @@ import taboolib.common.platform.function.getProxyPlayer
 import taboolib.common.platform.function.onlinePlayers
 import taboolib.common.platform.function.submit
 import taboolib.module.lang.sendLang
-import work.crash.micalhl.fireflyx.module.config.Settings
+import work.crash.micalhl.fireflyx.api.FireflyXSettings
 import work.crash.micalhl.fireflyx.util.getKeys
 import java.util.UUID
 
-object TpCommand {
+object Tpa {
 
     private val tpaData = hashMapOf<UUID, UUID>()
     private val tpahere = hashMapOf<UUID, Boolean>()
@@ -38,8 +38,8 @@ object TpCommand {
                     tpaData[target.uniqueId] = user.uniqueId
                     tpahere[target.uniqueId] = false
                     user.sendLang("tp-send", name)
-                    target.sendLang("tpa-receive", user.name, Settings.teleportTime)
-                    submit(delay = Settings.teleportTime * 20L) {
+                    target.sendLang("tpa-receive", user.name, FireflyXSettings.teleportTime)
+                    submit(delay = FireflyXSettings.teleportTime * 20L) {
                         tpaData.remove(target.uniqueId)
                         tpahere.remove(target.uniqueId)
                     }
@@ -65,8 +65,8 @@ object TpCommand {
                     tpaData[target.uniqueId] = user.uniqueId
                     tpahere[target.uniqueId] = true
                     user.sendLang("tp-send", name)
-                    target.sendLang("tpahere-receive", user.name, Settings.teleportTime)
-                    submit(delay = Settings.teleportTime * 20L) {
+                    target.sendLang("tpahere-receive", user.name, FireflyXSettings.teleportTime)
+                    submit(delay = FireflyXSettings.teleportTime * 20L) {
                         tpaData.remove(target.uniqueId)
                         tpahere.remove(target.uniqueId)
                     }
@@ -123,15 +123,15 @@ object TpCommand {
                     return@execute
                 }
                 if (tpahere[user.uniqueId]!!) {
-                    user.sendLang("tpahere-accpet-self", Settings.teleportCD)
+                    user.sendLang("tpahere-accpet-self", FireflyXSettings.teleportCD)
                     player.sendLang("tpahere-accept")
-                    submit(delay = Settings.teleportCD * 20L) {
+                    submit(delay = FireflyXSettings.teleportCD * 20L) {
                         user.teleport(player.location)
                     }
                 } else {
                     user.sendLang("tpa-accpet-self")
-                    player.sendLang("tpa-accpet", Settings.teleportCD)
-                    submit(delay = Settings.teleportCD * 20L) {
+                    player.sendLang("tpa-accpet", FireflyXSettings.teleportCD)
+                    submit(delay = FireflyXSettings.teleportCD * 20L) {
                         player.teleport(user.location)
                     }
                 }

@@ -1,4 +1,4 @@
-package work.crash.micalhl.fireflyx.module.command
+package work.crash.micalhl.fireflyx.module.feature
 
 import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
@@ -10,7 +10,7 @@ import work.crash.micalhl.fireflyx.module.ui.HomeMenu
 import work.crash.micalhl.fireflyx.util.parseLocation
 import work.crash.micalhl.fireflyx.util.parseString
 
-object HomeCommand {
+object Home {
 
     @Awake(LifeCycle.ACTIVE)
     fun register() {
