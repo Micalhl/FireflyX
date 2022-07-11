@@ -30,7 +30,6 @@ taboolib {
 
 repositories {
     mavenCentral()
-    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
@@ -39,6 +38,7 @@ dependencies {
     compileOnly("ink.ptms.core:v11900:11900-minimize:universal")
     compileOnly(kotlin("stdlib"))
     compileOnly(fileTree("libs"))
+    compileOnly ("com.github.MilkBowl:VaultAPI:1.7")
 }
 
 tasks.withType<JavaCompile> {
