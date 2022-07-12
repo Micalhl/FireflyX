@@ -31,6 +31,10 @@ taboolib {
 repositories {
     mavenCentral()
     maven { url = uri("https://jitpack.io") }
+    maven {
+        name = "spigotmc-repo"
+        url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
+    }
 }
 
 dependencies {
