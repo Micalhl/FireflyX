@@ -1,4 +1,4 @@
-package work.crash.micalhl.fireflyx.module.database
+package work.crash.micalhl.fireflyx.internal.database
 
 import taboolib.common.platform.function.getDataFolder
 import taboolib.module.database.ColumnOptionSQLite

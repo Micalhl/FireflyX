@@ -1,4 +1,4 @@
-package work.crash.micalhl.fireflyx.module.compat
+package work.crash.micalhl.fireflyx.internal.compat
 
 import net.milkbowl.vault.economy.AbstractEconomy
 import net.milkbowl.vault.economy.Economy
@@ -7,13 +7,20 @@ import org.bukkit.OfflinePlayer
 import org.bukkit.plugin.ServicePriority
 import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
+import taboolib.common.platform.function.console
+import taboolib.module.lang.sendLang
 import work.crash.micalhl.fireflyx.api.FireflyXAPI
 import work.crash.micalhl.fireflyx.api.FireflyXSettings
 import work.crash.micalhl.fireflyx.util.plugin
 import java.text.DecimalFormat
+import work.crash.micalhl.fireflyx.module.Module
 
 @Suppress("deprecation")
-class Vault : AbstractEconomy() {
+class Vault : AbstractEconomy(), Module {
+
+    override fun register() {
+        allow = true
+    }
 
     val decimalFormat = DecimalFormat().also {
         it.minimumFractionDigits = 2
@@ -142,10 +149,18 @@ class Vault : AbstractEconomy() {
 
     companion object {
 
+        var allow = false
+
         @Awake(LifeCycle.ENABLE)
         fun hook() {
-            val provider = Vault()
-            plugin().server.servicesManager.register(Economy::class.java, provider, plugin(), ServicePriority.Normal)
+            if (allow) {
+                if (plugin().server.pluginManager.getPlugin("Vault") == null) {
+                    console().sendLang("economy-no-vault")
+                    return
+                }
+                val provider = Vault()
+                plugin().server.servicesManager.register(Economy::class.java, provider, plugin(), ServicePriority.Normal)
+            }
         }
 
         @Awake(LifeCycle.DISABLE)

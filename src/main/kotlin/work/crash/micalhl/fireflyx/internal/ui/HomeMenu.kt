@@ -1,4 +1,4 @@
-package work.crash.micalhl.fireflyx.module.ui
+package work.crash.micalhl.fireflyx.internal.ui
 
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common5.Coerce
@@ -8,7 +8,7 @@ import taboolib.module.ui.type.Linked
 import taboolib.platform.util.buildItem
 import taboolib.platform.util.inventoryCenterSlots
 import work.crash.micalhl.fireflyx.api.FireflyXAPI
-import work.crash.micalhl.fireflyx.module.database.DatabaseHome
+import work.crash.micalhl.fireflyx.internal.database.DatabaseHome
 import work.crash.micalhl.fireflyx.util.parseLocation
 import work.crash.micalhl.fireflyx.util.toBKPlayer
 

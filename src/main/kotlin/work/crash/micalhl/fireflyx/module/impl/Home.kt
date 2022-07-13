@@ -1,19 +1,17 @@
-package work.crash.micalhl.fireflyx.module.feature
+package work.crash.micalhl.fireflyx.module.impl
 
-import taboolib.common.LifeCycle
-import taboolib.common.platform.Awake
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
 import taboolib.module.lang.sendLang
 import work.crash.micalhl.fireflyx.api.FireflyXAPI
-import work.crash.micalhl.fireflyx.module.ui.HomeMenu
+import work.crash.micalhl.fireflyx.internal.ui.HomeMenu
+import work.crash.micalhl.fireflyx.module.Module
 import work.crash.micalhl.fireflyx.util.parseLocation
 import work.crash.micalhl.fireflyx.util.parseString
 
-object Home {
+object Home : Module {
 
-    @Awake(LifeCycle.ACTIVE)
-    fun register() {
+    override fun register() {
         command("home") {
             dynamic(optional = true, commit = "name") {
                 suggestion<ProxyPlayer>(uncheck = true) { user, _ ->

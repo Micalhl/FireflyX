@@ -1,32 +1,34 @@
-package work.crash.micalhl.fireflyx.module.feature
+package work.crash.micalhl.fireflyx.module.impl
 
 import org.bukkit.conversations.ConversationFactory
-import taboolib.common.LifeCycle
-import taboolib.common.platform.Awake
+import org.bukkit.event.player.PlayerJoinEvent
 import taboolib.common.platform.ProxyCommandSender
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
+import taboolib.common.platform.event.EventPriority
+import taboolib.common.platform.event.SubscribeEvent
+import taboolib.common.platform.function.console
 import taboolib.common.platform.function.getProxyPlayer
 import taboolib.common.platform.function.onlinePlayers
 import taboolib.common.platform.function.submit
 import taboolib.module.lang.sendLang
-import taboolib.platform.compat.depositBalance
-import taboolib.platform.compat.getBalance
-import taboolib.platform.compat.hasAccount
-import taboolib.platform.compat.withdrawBalance
+import taboolib.platform.compat.*
 import taboolib.platform.util.onlinePlayers
 import work.crash.micalhl.fireflyx.api.FireflyXSettings
-import work.crash.micalhl.fireflyx.module.conversation.CaptchaConversation
-import work.crash.micalhl.fireflyx.module.ui.BalanceTop
+import work.crash.micalhl.fireflyx.internal.conversation.CaptchaConversation
+import work.crash.micalhl.fireflyx.internal.ui.BalanceTop
+import work.crash.micalhl.fireflyx.module.Module
 import work.crash.micalhl.fireflyx.util.isDouble
 import work.crash.micalhl.fireflyx.util.plugin
 import work.crash.micalhl.fireflyx.util.toBKPlayer
 import work.crash.micalhl.fireflyx.util.toOfflinePlayer
 
-object Money {
+object Money : Module {
 
-    @Awake(LifeCycle.ACTIVE)
-    fun register() {
+    var allow = false
+
+    override fun register() {
+        allow = true
         command(name = "balance", aliases = listOf("bal")) {
             dynamic(optional = true, commit = "player") {
                 suggestion<ProxyCommandSender>(uncheck = true) { _, _ ->
@@ -85,6 +87,14 @@ object Money {
             execute<ProxyPlayer> { user, _, _ ->
                 BalanceTop.open(user)
             }
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    fun e(e: PlayerJoinEvent) {
+        if (allow && !e.player.hasAccount()) {
+            e.player.createAccount()
+            console().sendLang("economy-account-create", e.player.uniqueId.toString())
         }
     }
 

@@ -1,16 +1,14 @@
-package work.crash.micalhl.fireflyx.module.feature
+package work.crash.micalhl.fireflyx.module.impl
 
-import taboolib.common.LifeCycle
-import taboolib.common.platform.Awake
 import taboolib.common.platform.ProxyCommandSender
 import taboolib.common.platform.command.command
 import taboolib.module.lang.sendLang
+import work.crash.micalhl.fireflyx.module.Module
 import work.crash.micalhl.fireflyx.util.getTPS
 
-object Tps {
+object Tps : Module {
 
-    @Awake(LifeCycle.ACTIVE)
-    fun register() {
+    override fun register() {
         command("tps") {
             execute<ProxyCommandSender> { user, _, _ ->
                 user.sendLang("tps", getTPS().joinToString(", "))

@@ -1,18 +1,16 @@
-package work.crash.micalhl.fireflyx.module.feature
+package work.crash.micalhl.fireflyx.module.impl
 
-import taboolib.common.LifeCycle
-import taboolib.common.platform.Awake
 import taboolib.common.platform.ProxyCommandSender
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
 import taboolib.common.platform.function.getProxyPlayer
 import taboolib.common.platform.function.onlinePlayers
 import taboolib.module.lang.sendLang
+import work.crash.micalhl.fireflyx.module.Module
 
-object Fly {
+object Fly : Module {
 
-    @Awake(LifeCycle.ACTIVE)
-    fun register() {
+    override fun register() {
         command(name = "fly", permission = "fireflyx.command.fly") {
             dynamic(optional = true, commit = "player") {
                 suggestion<ProxyCommandSender>(uncheck = true) { _, _ ->

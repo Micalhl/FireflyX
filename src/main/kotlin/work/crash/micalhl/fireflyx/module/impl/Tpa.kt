@@ -1,7 +1,5 @@
-package work.crash.micalhl.fireflyx.module.feature
+package work.crash.micalhl.fireflyx.module.impl
 
-import taboolib.common.LifeCycle
-import taboolib.common.platform.Awake
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
 import taboolib.common.platform.function.getProxyPlayer
@@ -9,16 +7,16 @@ import taboolib.common.platform.function.onlinePlayers
 import taboolib.common.platform.function.submit
 import taboolib.module.lang.sendLang
 import work.crash.micalhl.fireflyx.api.FireflyXSettings
+import work.crash.micalhl.fireflyx.module.Module
 import work.crash.micalhl.fireflyx.util.getKeys
 import java.util.UUID
 
-object Tpa {
+object Tpa : Module {
 
     private val tpaData = hashMapOf<UUID, UUID>()
     private val tpahere = hashMapOf<UUID, Boolean>()
 
-    @Awake(LifeCycle.ACTIVE)
-    fun register() {
+    override fun register() {
         command("tpa") {
             dynamic(commit = "player") {
                 suggestion<ProxyPlayer>(uncheck = true) { _, _ ->
