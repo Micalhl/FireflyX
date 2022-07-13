@@ -52,6 +52,7 @@ captcha-cancel: "&9&lFireflyX &a&l>> &f您取消了操作"
 captcha-different: "&9&lFireflyX &e&l>> &f您输入了错误的验证码！请重新输入命令来重新操作"
 captcha-success: "&9&lFireflyX &a&l>> &f验证码正确"
 
+home-no-home: "&9&lFireflyX &e&l>> &f你还没有设置过家"
 home-unknown: "&9&lFireflyX &e&l>> &f指定的家 &c{0} &f不存在"
 home-success: "&9&lFireflyX &a&l>> &f传送到家 &c{0}"
 

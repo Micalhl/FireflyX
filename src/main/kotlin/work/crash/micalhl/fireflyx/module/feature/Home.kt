@@ -31,6 +31,10 @@ object Home {
                 }
             }
             execute<ProxyPlayer> { user, _, _ ->
+                if (FireflyXAPI.databaseHome.get(user.uniqueId).isEmpty()) {
+                    user.sendLang("home-no-home")
+                    return@execute
+                }
                 if (FireflyXAPI.databaseHome.get(user.uniqueId).size > 1) {
                     HomeMenu.open(user)
                 } else {
