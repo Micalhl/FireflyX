@@ -1,5 +1,6 @@
 package work.crash.micalhl.fireflyx.module.impl
 
+import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerRespawnEvent
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
@@ -34,6 +35,13 @@ object Spawn : Module {
     fun e(e: PlayerRespawnEvent) {
         if (allow && !(e.isAnchorSpawn && e.isBedSpawn)) {
             e.respawnLocation = FireflyXSettings.spawn.parseLocation().toBukkitLocation()
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    fun e(e: PlayerJoinEvent) {
+        if (!e.player.hasPlayedBefore()) {
+            e.player.teleport(FireflyXSettings.spawn.parseLocation().toBukkitLocation())
         }
     }
 
