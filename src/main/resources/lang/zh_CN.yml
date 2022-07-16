@@ -63,3 +63,6 @@ delhome-success: "&9&lFireflyX &a&l>> &f已删除家 &c{0}"
 setspawn: "&9&lFireflyX &a&l>> &f已设置您脚下的位置为服务器出生点"
 
 modules-reload-server: "&9&lFireflyX &e&l>> &f检测到您打开或关闭了某些模块，需要重新启动服务器来应用更改，服务器将会自动重启"
+
+dispenser-patch-player: "A dispenser at the top or bottom of the world and near you wants to dispense a shulker box with items. We have blocked it. Please don't do this again, or you will be banned by the server."
+dispenser-patch-server: "A dispenser({0}, {1}, {2}, {3}) at the top or bottom of the world wants to dispense a shulker box with items. The player near it is {4}. We have blocked it."
