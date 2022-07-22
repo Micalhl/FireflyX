@@ -24,7 +24,7 @@ taboolib {
             name("Mical")
         }
         dependencies {
-            name("Vault")
+            name("Vault").optional(true)
         }
     }
 }
