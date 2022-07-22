@@ -8,7 +8,7 @@ import work.crash.micalhl.fireflyx.module.impl.*
 object ModuleManager {
 
     private val modules = listOf(
-        DispenserPatch, Fly, Home, JoinQuitTip, Money, Ping, Ping, Spawn, Tpa, Tps
+        DispenserPatch, Fly, Home, JoinQuitTip, Money, Online, Ping, Ping, Spawn, Tpa, Tps
     )
 
     @Awake(LifeCycle.ACTIVE)
