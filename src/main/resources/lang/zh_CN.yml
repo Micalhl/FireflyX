@@ -40,6 +40,7 @@ ping: "&9&lFireflyX &a&l>> &f您当前的延迟为：&c{0}&f."
 message-join: "&a玩家&3{0}&a加入游戏,当前在线&d{1}&a人."
 message-quit: "&7玩家&3{0}&7退出游戏,当前在线&d{1}&7人."
 
+economy-no-vault: "&9&lFireflyX &a&l>> &f没有找到 Vault, 无法使用经济功能!"
 economy-account-create: "&9&lFireflyX &a&l>> &f已为 &c{0} &f创建银行账户."
 economy-balance-other: "&9&lFireflyX &a&l>> &f玩家 &c{0} &f的账户余额为 &c{1} {2}&f."
 economy-balance-self: "&9&lFireflyX &a&l>> &f您的账户余额为 &c{0} {1}&f."

@@ -13,14 +13,10 @@ import cn.micalhl.fireflyx.api.FireflyXAPI
 import cn.micalhl.fireflyx.api.FireflyXSettings
 import cn.micalhl.fireflyx.util.plugin
 import java.text.DecimalFormat
-import cn.micalhl.fireflyx.module.Module
+import cn.micalhl.fireflyx.module.impl.Money
 
 @Suppress("deprecation")
-class Vault : AbstractEconomy(), Module {
-
-    override fun register() {
-        allow = true
-    }
+class Vault : AbstractEconomy() {
 
     val decimalFormat = DecimalFormat().also {
         it.minimumFractionDigits = 2
@@ -145,27 +141,5 @@ class Vault : AbstractEconomy(), Module {
 
     override fun createPlayerAccount(player: OfflinePlayer): Boolean {
         return createPlayerAccount(player.name!!)
-    }
-
-    companion object {
-
-        var allow = false
-
-        @Awake(LifeCycle.ENABLE)
-        fun hook() {
-            if (allow) {
-                if (plugin().server.pluginManager.getPlugin("Vault") == null) {
-                    console().sendLang("economy-no-vault")
-                    return
-                }
-                val provider = Vault()
-                plugin().server.servicesManager.register(Economy::class.java, provider, plugin(), ServicePriority.Normal)
-            }
-        }
-
-        @Awake(LifeCycle.DISABLE)
-        fun unhook() {
-            plugin().server.servicesManager.unregisterAll(plugin())
-        }
     }
 }

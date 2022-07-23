@@ -15,6 +15,7 @@ import taboolib.module.lang.sendLang
 import taboolib.platform.compat.*
 import taboolib.platform.util.onlinePlayers
 import cn.micalhl.fireflyx.api.FireflyXSettings
+import cn.micalhl.fireflyx.internal.compat.Vault
 import cn.micalhl.fireflyx.internal.conversation.CaptchaConversation
 import cn.micalhl.fireflyx.internal.ui.BalanceTop
 import cn.micalhl.fireflyx.module.Module
@@ -22,6 +23,10 @@ import cn.micalhl.fireflyx.util.isDouble
 import cn.micalhl.fireflyx.util.plugin
 import cn.micalhl.fireflyx.util.toBKPlayer
 import cn.micalhl.fireflyx.util.toOfflinePlayer
+import net.milkbowl.vault.economy.Economy
+import org.bukkit.plugin.ServicePriority
+import taboolib.common.LifeCycle
+import taboolib.common.platform.Awake
 
 object Money : Module {
 
@@ -110,5 +115,23 @@ object Money : Module {
             e.player.createAccount()
             console().sendLang("economy-account-create", e.player.uniqueId.toString())
         }
+    }
+
+    @Awake(LifeCycle.ENABLE)
+    fun hook() {
+        if (allow) {
+            if (plugin().server.pluginManager.getPlugin("Vault") == null) {
+                console().sendLang("economy-no-vault")
+                allow = false
+                return
+            }
+            val provider = Vault()
+            plugin().server.servicesManager.register(Economy::class.java, provider, plugin(), ServicePriority.Normal)
+        }
+    }
+
+    @Awake(LifeCycle.DISABLE)
+    fun unhook() {
+        plugin().server.servicesManager.unregisterAll(plugin())
     }
 }

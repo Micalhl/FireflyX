@@ -11,7 +11,7 @@ object ModuleManager {
         Auth, DispenserPatch, Fly, Home, JoinQuitTip, Money, Online, Ping, Spawn, Tpa, Tps
     )
 
-    @Awake(LifeCycle.ACTIVE)
+    @Awake(LifeCycle.LOAD)
     fun init() {
         modules.filter { FireflyXModules.conf.getBoolean(it.javaClass.simpleName) }
             .forEach { it.register() }
