@@ -48,4 +48,8 @@ object FireflyXSettings {
     @ConfigNode("AuthKickDelay")
     var autoKickDelay = 20L
         get() = field * 20L
+
+    @ConfigNode("TeleportRandomRadius")
+    var teleportRandomRadius = 25000
+        private set
 }

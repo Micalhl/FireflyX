@@ -1,5 +1,6 @@
 common-player-null: "&9&lFireflyX &e&l>> &f玩家不在线或不存在，请等待玩家上线或是检查大小写."
 
+teleport-random: "&9&lFireflyX &a&l>> &f已随机传送到 &c{0}&f."
 tp-send: "&9&lFireflyX &a&l>> &f请求已发送。输入 &c/tpacancel {0} &f取消请求."
 tp-self: "&9&lFireflyX &e&l>> &f您不可以传送到您自己."
 tp-no-request: "&9&lFireflyX &e&l>> &f没有待处理的请求."

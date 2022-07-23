@@ -7,5 +7,6 @@ Money: true
 Online: true
 Ping: true
 Spawn: true
+TeleportRandom: true
 Tpa: true
 Tps: true
