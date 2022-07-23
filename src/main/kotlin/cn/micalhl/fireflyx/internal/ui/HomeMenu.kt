@@ -21,7 +21,7 @@ object HomeMenu {
             slots(inventoryCenterSlots)
             handLocked(true)
             elements {
-                cn.micalhl.fireflyx.api.FireflyXAPI.databaseHome.get(user.uniqueId)
+                FireflyXAPI.databaseHome.get(user.uniqueId)
             }
             onGenerate { _, element, _, _ ->
                 val location = element.location.parseLocation()

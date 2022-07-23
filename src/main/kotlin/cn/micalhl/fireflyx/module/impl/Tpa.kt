@@ -36,8 +36,8 @@ object Tpa : Module {
                     tpaData[target.uniqueId] = user.uniqueId
                     tpahere[target.uniqueId] = false
                     user.sendLang("tp-send", name)
-                    target.sendLang("tpa-receive", user.name, cn.micalhl.fireflyx.api.FireflyXSettings.teleportTime)
-                    submit(delay = cn.micalhl.fireflyx.api.FireflyXSettings.teleportTime * 20L) {
+                    target.sendLang("tpa-receive", user.name, FireflyXSettings.teleportTime)
+                    submit(delay = FireflyXSettings.teleportTime * 20L) {
                         tpaData.remove(target.uniqueId)
                         tpahere.remove(target.uniqueId)
                     }
@@ -63,8 +63,8 @@ object Tpa : Module {
                     tpaData[target.uniqueId] = user.uniqueId
                     tpahere[target.uniqueId] = true
                     user.sendLang("tp-send", name)
-                    target.sendLang("tpahere-receive", user.name, cn.micalhl.fireflyx.api.FireflyXSettings.teleportTime)
-                    submit(delay = cn.micalhl.fireflyx.api.FireflyXSettings.teleportTime * 20L) {
+                    target.sendLang("tpahere-receive", user.name, FireflyXSettings.teleportTime)
+                    submit(delay = FireflyXSettings.teleportTime * 20L) {
                         tpaData.remove(target.uniqueId)
                         tpahere.remove(target.uniqueId)
                     }
@@ -121,15 +121,15 @@ object Tpa : Module {
                     return@execute
                 }
                 if (tpahere[user.uniqueId]!!) {
-                    user.sendLang("tpahere-accpet-self", cn.micalhl.fireflyx.api.FireflyXSettings.teleportCD)
+                    user.sendLang("tpahere-accpet-self", FireflyXSettings.teleportCD)
                     player.sendLang("tpahere-accept")
-                    submit(delay = cn.micalhl.fireflyx.api.FireflyXSettings.teleportCD * 20L) {
+                    submit(delay = FireflyXSettings.teleportCD * 20L) {
                         user.teleport(player.location)
                     }
                 } else {
                     user.sendLang("tpa-accpet-self")
-                    player.sendLang("tpa-accpet", cn.micalhl.fireflyx.api.FireflyXSettings.teleportCD)
-                    submit(delay = cn.micalhl.fireflyx.api.FireflyXSettings.teleportCD * 20L) {
+                    player.sendLang("tpa-accpet", FireflyXSettings.teleportCD)
+                    submit(delay = FireflyXSettings.teleportCD * 20L) {
                         player.teleport(user.location)
                     }
                 }

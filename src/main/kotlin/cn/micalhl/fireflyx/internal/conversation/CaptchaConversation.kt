@@ -11,7 +11,7 @@ import cn.micalhl.fireflyx.util.generate
 
 class CaptchaConversation(private val user: ProxyPlayer, val func: () -> Unit) : StringPrompt() {
 
-    private val captcha = generate(cn.micalhl.fireflyx.api.FireflyXSettings.captchaIndex)
+    private val captcha = generate(FireflyXSettings.captchaIndex)
 
     override fun getPromptText(context: ConversationContext): String {
         return user.asLangText("captcha", captcha)

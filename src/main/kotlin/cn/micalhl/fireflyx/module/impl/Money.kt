@@ -41,11 +41,20 @@ object Money : Module {
                         user.sendLang("common-player-null")
                         return@execute
                     }
-                    user.sendLang("economy-balance-other", target.name, target.toOfflinePlayer().getBalance(), cn.micalhl.fireflyx.api.FireflyXSettings.currencyName)
+                    user.sendLang(
+                        "economy-balance-other",
+                        target.name,
+                        target.toOfflinePlayer().getBalance(),
+                        FireflyXSettings.currencyName
+                    )
                 }
             }
             execute<ProxyPlayer> { user, _, _ ->
-                user.sendLang("economy-balance-self", user.toOfflinePlayer().getBalance(), cn.micalhl.fireflyx.api.FireflyXSettings.currencyName)
+                user.sendLang(
+                    "economy-balance-self",
+                    user.toOfflinePlayer().getBalance(),
+                    FireflyXSettings.currencyName
+                )
             }
         }
         command("pay") {
@@ -66,14 +75,19 @@ object Money : Module {
                             user.sendLang("economy-pay-failed")
                             return@execute
                         }
-                        user.sendLang("economy-pay-captcha", name, money, cn.micalhl.fireflyx.api.FireflyXSettings.currencyName)
+                        user.sendLang("economy-pay-captcha", name, money, FireflyXSettings.currencyName)
                         ConversationFactory(plugin())
                             .withFirstPrompt(CaptchaConversation(user) {
                                 user.toOfflinePlayer().withdrawBalance(money.toDouble())
                                 player.toOfflinePlayer().depositBalance(money.toDouble())
                                 submit(delay = 1L, async = true) {
-                                    user.sendLang("economy-pay-success", name, money, cn.micalhl.fireflyx.api.FireflyXSettings.currencyName)
-                                    player.sendLang("economy-pay-receive", user.name, money, cn.micalhl.fireflyx.api.FireflyXSettings.currencyName)
+                                    user.sendLang("economy-pay-success", name, money, FireflyXSettings.currencyName)
+                                    player.sendLang(
+                                        "economy-pay-receive",
+                                        user.name,
+                                        money,
+                                        FireflyXSettings.currencyName
+                                    )
                                 }
                             })
                             .withLocalEcho(false)

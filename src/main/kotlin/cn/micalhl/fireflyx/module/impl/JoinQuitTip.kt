@@ -28,7 +28,11 @@ object JoinQuitTip : Module {
     @SubscribeEvent(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun e(e: PlayerQuitEvent) {
         if (allow) {
-            e.quitMessage = console().asLangText("message-quit", e.player.name, if (cn.micalhl.fireflyx.api.FireflyXSettings.quitTipFix) onlinePlayers().size - 1 else onlinePlayers().size)
+            e.quitMessage = console().asLangText(
+                "message-quit",
+                e.player.name,
+                if (FireflyXSettings.quitTipFix) onlinePlayers().size - 1 else onlinePlayers().size
+            )
         }
     }
 }

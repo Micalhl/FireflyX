@@ -13,6 +13,7 @@ object ModuleManager {
 
     @Awake(LifeCycle.ACTIVE)
     fun init() {
-        modules.filter { cn.micalhl.fireflyx.api.FireflyXModules.conf.getBoolean(it.javaClass.simpleName) }.forEach { it.register() }
+        modules.filter { FireflyXModules.conf.getBoolean(it.javaClass.simpleName) }
+            .forEach { it.register() }
     }
 }

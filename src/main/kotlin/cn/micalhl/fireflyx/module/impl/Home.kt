@@ -15,7 +15,7 @@ object Home : Module {
         command("home") {
             dynamic(optional = true, commit = "name") {
                 suggestion<ProxyPlayer>(uncheck = true) { user, _ ->
-                    cn.micalhl.fireflyx.api.FireflyXAPI.databaseHome.get(user.uniqueId).map { it.name }
+                    FireflyXAPI.databaseHome.get(user.uniqueId).map { it.name }
                 }
                 execute<ProxyPlayer> { user, context, _ ->
                     val name = context.argument(0)
@@ -23,7 +23,7 @@ object Home : Module {
                         user.sendLang("home-unknown", name)
                         return@execute
                     }
-                    val home = cn.micalhl.fireflyx.api.FireflyXAPI.databaseHome.get(name, user.uniqueId)
+                    val home = FireflyXAPI.databaseHome.get(name, user.uniqueId)
                     user.teleport(home!!.location.parseLocation())
                     user.sendLang("home-success", name)
                 }
@@ -36,7 +36,7 @@ object Home : Module {
                 if (cn.micalhl.fireflyx.api.FireflyXAPI.databaseHome.get(user.uniqueId).size > 1) {
                     HomeMenu.open(user)
                 } else {
-                    val home = cn.micalhl.fireflyx.api.FireflyXAPI.databaseHome.get(user.uniqueId)[0]
+                    val home = FireflyXAPI.databaseHome.get(user.uniqueId)[0]
                     user.teleport(home.location.parseLocation())
                     user.sendLang("home-success", home.name)
                 }
@@ -47,20 +47,20 @@ object Home : Module {
                 execute<ProxyPlayer> { user, context, _ ->
                     val name = context.argument(0)
                     val location = user.location.parseString()
-                    cn.micalhl.fireflyx.api.FireflyXAPI.databaseHome.set(name, user.uniqueId, location)
+                    FireflyXAPI.databaseHome.set(name, user.uniqueId, location)
                     user.sendLang("sethome-success", name)
                 }
             }
             execute<ProxyPlayer> { user, _, _ ->
                 val location = user.location.parseString()
-                cn.micalhl.fireflyx.api.FireflyXAPI.databaseHome.set("home", user.uniqueId, location)
+                FireflyXAPI.databaseHome.set("home", user.uniqueId, location)
                 user.sendLang("sethome-success", "home")
             }
         }
         command("delhome") {
             dynamic(commit = "home") {
                 suggestion<ProxyPlayer>(uncheck = true) { user, _ ->
-                    cn.micalhl.fireflyx.api.FireflyXAPI.databaseHome.get(user.uniqueId).map { it.name}
+                    FireflyXAPI.databaseHome.get(user.uniqueId).map { it.name }
                 }
                 execute<ProxyPlayer> { user, context, _ ->
                     val name = context.argument(0)
@@ -68,7 +68,7 @@ object Home : Module {
                         user.sendLang("home-unknown", name)
                         return@execute
                     }
-                    cn.micalhl.fireflyx.api.FireflyXAPI.databaseHome.del(name, user.uniqueId)
+                    FireflyXAPI.databaseHome.del(name, user.uniqueId)
                     user.sendLang("delhome-success", name)
                 }
             }

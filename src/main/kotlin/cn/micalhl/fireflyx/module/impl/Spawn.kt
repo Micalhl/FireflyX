@@ -20,12 +20,12 @@ object Spawn : Module {
         allow = true
         command("spawn") {
             execute<ProxyPlayer> { user, _, _ ->
-                user.teleport(cn.micalhl.fireflyx.api.FireflyXSettings.spawn.parseLocation())
+                user.teleport(FireflyXSettings.spawn.parseLocation())
             }
         }
         command("setspawn") {
             execute<ProxyPlayer> { user, _, _ ->
-                cn.micalhl.fireflyx.api.FireflyXSettings.spawn = user.location.parseString()
+                FireflyXSettings.spawn = user.location.parseString()
                 user.sendLang("setspawn")
             }
         }
@@ -34,14 +34,14 @@ object Spawn : Module {
     @SubscribeEvent(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun e(e: PlayerRespawnEvent) {
         if (allow && !(e.isAnchorSpawn && e.isBedSpawn)) {
-            e.respawnLocation = cn.micalhl.fireflyx.api.FireflyXSettings.spawn.parseLocation().toBukkitLocation()
+            e.respawnLocation = FireflyXSettings.spawn.parseLocation().toBukkitLocation()
         }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     fun e(e: PlayerJoinEvent) {
         if (!e.player.hasPlayedBefore()) {
-            e.player.teleport(cn.micalhl.fireflyx.api.FireflyXSettings.spawn.parseLocation().toBukkitLocation())
+            e.player.teleport(FireflyXSettings.spawn.parseLocation().toBukkitLocation())
         }
     }
 }

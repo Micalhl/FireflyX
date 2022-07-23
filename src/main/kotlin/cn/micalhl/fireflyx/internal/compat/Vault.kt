@@ -19,7 +19,7 @@ import cn.micalhl.fireflyx.module.Module
 class Vault : AbstractEconomy(), Module {
 
     override fun register() {
-        cn.micalhl.fireflyx.internal.compat.Vault.Companion.allow = true
+        allow = true
     }
 
     val decimalFormat = DecimalFormat().also {
@@ -39,10 +39,10 @@ class Vault : AbstractEconomy(), Module {
 
     override fun currencyNamePlural(): String = currencyNameSingular()
 
-    override fun currencyNameSingular(): String = cn.micalhl.fireflyx.api.FireflyXSettings.currencyName
+    override fun currencyNameSingular(): String = FireflyXSettings.currencyName
 
     override fun hasAccount(name: String): Boolean =
-        cn.micalhl.fireflyx.api.FireflyXAPI.databaseEconomy.has(plugin().server.getOfflinePlayer(name).uniqueId)
+        FireflyXAPI.databaseEconomy.has(plugin().server.getOfflinePlayer(name).uniqueId)
 
     override fun hasAccount(name: String, world: String): Boolean = false
 
@@ -51,7 +51,7 @@ class Vault : AbstractEconomy(), Module {
             return 0.0
         }
         val user = plugin().server.getOfflinePlayer(name)
-        return cn.micalhl.fireflyx.api.FireflyXAPI.databaseEconomy.get(user.uniqueId)
+        return FireflyXAPI.databaseEconomy.get(user.uniqueId)
     }
 
     override fun getBalance(p0: String?, p1: String?): Double = 0.0
@@ -89,7 +89,7 @@ class Vault : AbstractEconomy(), Module {
         if (!hasAccount(p0)) {
             return EconomyResponse(p1, getBalance(p0), EconomyResponse.ResponseType.FAILURE, null)
         }
-        cn.micalhl.fireflyx.api.FireflyXAPI.databaseEconomy.add(player.uniqueId, p1)
+        FireflyXAPI.databaseEconomy.add(player.uniqueId, p1)
         return EconomyResponse(p1, getBalance(p0), EconomyResponse.ResponseType.SUCCESS, null)
     }
 
@@ -137,7 +137,7 @@ class Vault : AbstractEconomy(), Module {
 
     override fun createPlayerAccount(p0: String): Boolean {
         val player = plugin().server.getOfflinePlayer(p0)
-        cn.micalhl.fireflyx.api.FireflyXAPI.databaseEconomy.create(player.uniqueId)
+        FireflyXAPI.databaseEconomy.create(player.uniqueId)
         return true
     }
 
@@ -153,12 +153,12 @@ class Vault : AbstractEconomy(), Module {
 
         @Awake(LifeCycle.ENABLE)
         fun hook() {
-            if (cn.micalhl.fireflyx.internal.compat.Vault.Companion.allow) {
+            if (allow) {
                 if (plugin().server.pluginManager.getPlugin("Vault") == null) {
                     console().sendLang("economy-no-vault")
                     return
                 }
-                val provider = cn.micalhl.fireflyx.internal.compat.Vault()
+                val provider = Vault()
                 plugin().server.servicesManager.register(Economy::class.java, provider, plugin(), ServicePriority.Normal)
             }
         }

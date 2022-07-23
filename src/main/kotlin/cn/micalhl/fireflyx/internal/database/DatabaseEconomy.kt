@@ -36,7 +36,7 @@ class DatabaseEconomy {
         }
     }
 
-    fun create(user: UUID, economy: Double = cn.micalhl.fireflyx.api.FireflyXSettings.firstJoinMoney) {
+    fun create(user: UUID, economy: Double = FireflyXSettings.firstJoinMoney) {
         table.insert(dataSource, "user", "economy") {
             value(user, economy)
         }

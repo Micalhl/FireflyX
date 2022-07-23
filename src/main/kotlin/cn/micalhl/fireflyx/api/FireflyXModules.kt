@@ -16,7 +16,7 @@ object FireflyXModules {
 
     @Awake(LifeCycle.ENABLE)
     fun onReload() {
-        cn.micalhl.fireflyx.api.FireflyXModules.conf.onReload {
+        conf.onReload {
             console().sendLang("modules-reload-server")
             plugin().server.shutdown()
         }
