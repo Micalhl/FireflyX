@@ -1,8 +1,10 @@
+Auth: true
 DispenserPatch: true
 Fly: true
 Home: true
 JoinQuitTip: true
 Money: true
+Online: true
 Ping: true
 Spawn: true
 Tpa: true

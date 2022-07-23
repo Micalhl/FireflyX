@@ -5,3 +5,5 @@ FirstJoinMoney: 100.0
 CurrencyName: "硬币"
 CaptchaIndex: 6
 Spawn: "FirstEnable"
+AuthMsgCD: 3
+AuthKickDelay: 20

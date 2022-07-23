@@ -40,4 +40,12 @@ object FireflyXSettings {
     var spawn = "FirstEnable"
         get() = if (field == "FirstEnable") plugin().server.getWorld("world")!!.spawnLocation.toProxyLocation()
             .parseString() else field
+
+    @ConfigNode("AuthMsgCD")
+    var autoMsgCD = 3L
+        get() = field * 20L
+
+    @ConfigNode("AuthKickDelay")
+    var autoKickDelay = 20L
+        get() = field * 20L
 }
