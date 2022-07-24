@@ -52,7 +52,7 @@ class AuthDatabase {
     }
 
     fun change(user: ProxyPlayer, password: String) {
-        table.delete(dataSource) { where { "user" eq user } }
+        table.delete(dataSource) { where { "user" eq user.uniqueId } }
         register(user, password)
     }
 

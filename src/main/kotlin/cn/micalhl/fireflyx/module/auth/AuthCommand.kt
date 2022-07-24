@@ -63,7 +63,7 @@ object AuthCommand {
                                 user.sendLang("auth-change-confirm")
                                 return@execute
                             }
-                            FireflyXAPI.authDatabase.register(user, calculate(new))
+                            FireflyXAPI.authDatabase.change(user, calculate(new))
                             user.sendLang("auth-change-success")
                         }
                     }
