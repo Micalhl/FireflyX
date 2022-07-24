@@ -16,6 +16,9 @@ JoinQuitTip:
 Money:
   enable: true
   name: "经济系统"
+OneKeySellItem:
+  enable: true
+  name: "一键售卖物品"
 Online:
   enable: true
   name: "查看在线玩家"
