@@ -2,10 +2,8 @@ package cn.micalhl.fireflyx.module.impl
 
 import cn.micalhl.fireflyx.api.FireflyXAPI
 import cn.micalhl.fireflyx.api.FireflyXSettings
-import cn.micalhl.fireflyx.common.filter.Log4JFilter
 import cn.micalhl.fireflyx.module.Module
 import cn.micalhl.fireflyx.util.plugin
-import org.apache.logging.log4j.LogManager
 import org.bukkit.entity.Player
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.block.BlockPlaceEvent
@@ -15,8 +13,6 @@ import org.bukkit.event.entity.EntityPickupItemEvent
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.event.player.*
-import taboolib.common.LifeCycle
-import taboolib.common.platform.Awake
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
 import taboolib.common.platform.event.SubscribeEvent
@@ -29,7 +25,6 @@ import taboolib.platform.event.PlayerJumpEvent
 import taboolib.platform.util.sendLang
 import java.security.MessageDigest
 import java.util.*
-
 
 object Auth : Module {
 
@@ -50,6 +45,7 @@ object Auth : Module {
                         val second = context.argument(0)
                         if (first == second) {
                             FireflyXAPI.databaseAuth.register(user, calculate(first))
+                            login.add(user.uniqueId)
                             user.sendLang("auth-register-success")
                         } else {
                             user.sendLang("auth-register-fail")
@@ -93,26 +89,12 @@ object Auth : Module {
                                 return@execute
                             }
                             FireflyXAPI.databaseAuth.register(user, calculate(new))
-                            login.add(user.uniqueId)
                             user.sendLang("auth-change-success")
                         }
                     }
                 }
             }
         }
-    }
-
-    @Awake(LifeCycle.ENABLE)
-    fun initFilter() {
-        val logger: org.apache.logging.log4j.core.Logger
-        logger = LogManager.getRootLogger() as org.apache.logging.log4j.core.Logger
-        logger.addFilter(Log4JFilter())
-    }
-
-    fun isAuthCommand(command: String): Boolean {
-        return command.startsWith("/register ") || command.startsWith("/reg ") || command.startsWith("/r ") || command.startsWith(
-            "/login "
-        ) || command.startsWith("/l ")
     }
 
     /**
