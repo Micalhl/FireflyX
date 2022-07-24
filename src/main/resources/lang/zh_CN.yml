@@ -9,10 +9,10 @@ plugin-loading:
   - "&r"
   - "&9&lFireflyX &a&l>> &7正在加载 &6Firefly&eX&f... &8{0}"
   - "&r"
-plugin-module-enabled: "&9&lFireflyX &a&l>> &a已加载模块&f: &c{0}&f."
-plugin-module-disabled: "&9&lFireflyX &a&l>> &c已关闭模块&f: &c{0}&f."
-plugin-vault-hooked: "&9&lFireflyX &a&l>> &f成功与 &cVault &f关联."
-plugin-enabled: "&9&lFireflyX &a&l>> &f插件启动. 当前运行版本 &cv{0}&f."
+plugin-module-enabled: "&9&lFireflyX &a&l>> &f已加载模块&f: &a{0}&f."
+plugin-module-disabled: "&9&lFireflyX &a&l>> &f已关闭模块&f: &c{0}&f."
+plugin-vault-hooked: "&9&lFireflyX &a&l>> &f成功与 &aVault &f关联."
+plugin-enabled: "&9&lFireflyX &a&l>> &f插件启动. 当前运行版本 &av{0}&f."
 
 plugin-reloaded: "&9&lFireflyX &a&l>> &f已重新载入主配置文件及语言文件."
 

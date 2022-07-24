@@ -48,7 +48,7 @@ object ModuleManager {
         }
         loaded.forEach {
             console().sendLang(
-                "plugin-modules-enabled", Modules.conf.getStringColored("${it}.name") ?: it
+                "plugin-module-enabled", Modules.conf.getStringColored("${it}.name") ?: it
             )
         }
         with(modules.map { it.javaClass.simpleName }.toMutableList()) {
