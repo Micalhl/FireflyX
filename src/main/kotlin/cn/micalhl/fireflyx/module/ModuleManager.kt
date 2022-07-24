@@ -1,6 +1,7 @@
 package cn.micalhl.fireflyx.module
 
 import cn.micalhl.fireflyx.common.config.Modules
+import cn.micalhl.fireflyx.module.Module
 import cn.micalhl.fireflyx.module.auth.Auth
 import cn.micalhl.fireflyx.module.dispenserpatch.DispenserPatch
 import cn.micalhl.fireflyx.module.fly.Fly
@@ -20,23 +21,39 @@ import taboolib.module.lang.sendLang
 
 object ModuleManager {
 
-    private val modules = listOf(
-        Auth, DispenserPatch, Fly, Home, JoinQuitTip, Money, OneKeySellItem, Online, Ping, Spawn, TeleportRandom, Tpa, Tps
+    private val modules = arrayListOf(
+        Auth,
+        DispenserPatch,
+        Fly,
+        Home,
+        JoinQuitTip,
+        Money,
+        OneKeySellItem,
+        Online,
+        Ping,
+        Spawn,
+        TeleportRandom,
+        Tpa,
+        Tps
     )
+
+    private val loaded = arrayListOf<String>()
 
     fun init() {
         modules.filter { Modules.conf.getBoolean("${it.javaClass.simpleName}.enable") }.forEach {
-                it.init()
-                console().sendLang(
-                    "plugin-module-enabled",
-                    Modules.conf.getStringColored("${it.javaClass.simpleName}.name") ?: it.javaClass.simpleName
-                )
+            it.init()
+            if (it.allow) {
+                loaded.add(it.javaClass.simpleName)
             }
-        modules.filter { !Modules.conf.getBoolean("${it.javaClass.simpleName}.enable") }.forEach {
+        }
+        loaded.forEach {
             console().sendLang(
-                "plugin-module-enabled",
-                Modules.conf.getStringColored("${it.javaClass.simpleName}.name") ?: it.javaClass.simpleName
+                "plugin-modules-enabled", Modules.conf.getStringColored("${it}.name") ?: it
             )
+        }
+        with(modules.map { it.javaClass.simpleName }.toMutableList()) {
+            removeAll(loaded)
+            forEach { console().sendLang("plugin-module-disabled", Modules.conf.getStringColored("${it}.name") ?: it) }
         }
     }
 }
