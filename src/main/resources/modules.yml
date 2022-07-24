@@ -1,12 +1,36 @@
-Auth: true
-DispenserPatch: true
-Fly: true
-Home: true
-JoinQuitTip: true
-Money: true
-Online: true
-Ping: true
-Spawn: true
-TeleportRandom: true
-Tpa: true
-Tps: true
+Auth:
+  enable: true
+  name: "注册登录模块"
+DispenserPatch:
+  enable: true
+  name: "发射器修复"
+Fly:
+  enable: true
+  name: "飞行功能"
+Home:
+  enable: true
+  name: "家功能"
+JoinQuitTip:
+  enable: true
+  name: "加入退出提示"
+Money:
+  enable: true
+  name: "经济系统"
+Online:
+  enable: true
+  name: "查看在线玩家"
+Ping:
+  enable: true
+  name: "查看延迟"
+Spawn:
+  enable: true
+  name: "主城功能"
+TeleportRandom:
+  enable: true
+  name: "随机传送"
+Tpa:
+  enable: true
+  name: "传送功能"
+Tps:
+  enable: true
+  name: "查看服务器TPS功能"

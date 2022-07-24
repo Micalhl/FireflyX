@@ -1,3 +1,21 @@
+plugin-logo:
+  - "&9&lFireflyX &a&l>> &b___________.__                _____.__         ____  ___ "
+  - "&9&lFireflyX &a&l>> &b\_   _____/|__|______   _____/ ____\  | ___.__.\   \/  / "
+  - "&9&lFireflyX &a&l>> &b |    __)  |  \_  __ \_/ __ \   __\|  |<   |  | \     /  "
+  - "&9&lFireflyX &a&l>> &b |     \   |  ||  | \/\  ___/|  |  |  |_\___  | /     \  "
+  - "&9&lFireflyX &a&l>> &b \___  /   |__||__|    \___  >__|  |____/ ____|/___/\  \ "
+  - "&9&lFireflyX &a&l>> &b     \/                    \/           \/           \_/ "
+plugin-loading:
+  - "&r"
+  - "&9&lFireflyX &a&l>> &7正在加载 &6Firefly&eX&f... &8{0}"
+  - "&r"
+plugin-module-enabled: "&9&lFireflyX &a&l>> &f已&a加载&f模块: &c{0}&f."
+plugin-module-disabled: "&9&lFireflyX &a&l>> &f已&d关闭&f模块: &c{0}&f."
+plugin-vault-hooked: "&9&lFireflyX &a&l>> &f成功与 &cVault &f关联."
+plugin-enabled: "&9&lFireflyX &a&l>> &f插件启动. 当前运行版本 &c{0}&f."
+
+plugin-reloaded: "&9&lFireflyX &a&l>> &f已重新载入主配置文件及语言文件."
+
 common-player-null: "&9&lFireflyX &e&l>> &f玩家不在线或不存在，请等待玩家上线或是检查大小写."
 
 teleport-random: "&9&lFireflyX &a&l>> &f已随机传送到 &c{0}&f."

@@ -1,12 +1,12 @@
 package cn.micalhl.fireflyx.api
 
-import cn.micalhl.fireflyx.common.database.DatabaseEconomy
-import cn.micalhl.fireflyx.common.database.DatabaseHome
-import cn.micalhl.fireflyx.common.database.DatabaseAuth
+import cn.micalhl.fireflyx.module.money.database.EconomyDatabase
+import cn.micalhl.fireflyx.module.home.database.HomeDatabase
+import cn.micalhl.fireflyx.module.auth.database.AuthDatabase
 
 object FireflyXAPI {
 
-    val databaseEconomy = DatabaseEconomy()
-    val databaseHome = DatabaseHome()
-    val databaseAuth = DatabaseAuth()
+    val economyDatabase = EconomyDatabase()
+    val homeDatabase = HomeDatabase()
+    val authDatabase = AuthDatabase()
 }
