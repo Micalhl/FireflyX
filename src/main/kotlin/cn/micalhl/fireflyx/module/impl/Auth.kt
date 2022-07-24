@@ -2,24 +2,21 @@ package cn.micalhl.fireflyx.module.impl
 
 import cn.micalhl.fireflyx.api.FireflyXAPI
 import cn.micalhl.fireflyx.api.FireflyXSettings
+import cn.micalhl.fireflyx.common.filter.Log4JFilter
 import cn.micalhl.fireflyx.module.Module
 import cn.micalhl.fireflyx.util.plugin
+import org.apache.logging.log4j.LogManager
 import org.bukkit.entity.Player
+import org.bukkit.event.block.BlockBreakEvent
+import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityPickupItemEvent
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryOpenEvent
-import org.bukkit.event.player.AsyncPlayerChatEvent
-import org.bukkit.event.player.AsyncPlayerPreLoginEvent
-import org.bukkit.event.player.PlayerCommandPreprocessEvent
-import org.bukkit.event.player.PlayerDropItemEvent
-import org.bukkit.event.player.PlayerInteractEntityEvent
-import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.event.player.PlayerJoinEvent
-import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.event.player.PlayerQuitEvent
-import org.bukkit.event.player.PlayerTeleportEvent
+import org.bukkit.event.player.*
+import taboolib.common.LifeCycle
+import taboolib.common.platform.Awake
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
 import taboolib.common.platform.event.SubscribeEvent
@@ -31,7 +28,8 @@ import taboolib.module.lang.sendLang
 import taboolib.platform.event.PlayerJumpEvent
 import taboolib.platform.util.sendLang
 import java.security.MessageDigest
-import java.util.UUID
+import java.util.*
+
 
 object Auth : Module {
 
@@ -70,6 +68,7 @@ object Auth : Module {
                     val password = calculate(context.argument(0))
                     val data = FireflyXAPI.databaseAuth.get(user.uniqueId)
                     if (password == data) {
+                        login.add(user.uniqueId)
                         user.sendLang("auth-login-success")
                     } else {
                         user.sendLang("auth-login-fail")
@@ -94,12 +93,26 @@ object Auth : Module {
                                 return@execute
                             }
                             FireflyXAPI.databaseAuth.register(user, calculate(new))
+                            login.add(user.uniqueId)
                             user.sendLang("auth-change-success")
                         }
                     }
                 }
             }
         }
+    }
+
+    @Awake(LifeCycle.ENABLE)
+    fun initFilter() {
+        val logger: org.apache.logging.log4j.core.Logger
+        logger = LogManager.getRootLogger() as org.apache.logging.log4j.core.Logger
+        logger.addFilter(Log4JFilter())
+    }
+
+    fun isAuthCommand(command: String): Boolean {
+        return command.startsWith("/register ") || command.startsWith("/reg ") || command.startsWith("/r ") || command.startsWith(
+            "/login "
+        ) || command.startsWith("/l ")
     }
 
     /**
@@ -148,15 +161,39 @@ object Auth : Module {
     fun e(e: PlayerJoinEvent) {
         if (allow) {
             submit(delay = FireflyXSettings.autoKickDelay) {
-                e.player.kickPlayer(console().asLangText("auth-kick-delay"))
-            }
-            submit(period = FireflyXSettings.autoMsgCD) {
-                if (FireflyXAPI.databaseAuth.registered(e.player.uniqueId)) {
-                    e.player.sendLang("auth-login")
-                } else {
-                    e.player.sendLang("auth-register")
+                if (!login.contains(e.player.uniqueId)) {
+                    e.player.kickPlayer(console().asLangText("auth-kick-delay"))
                 }
             }
+            submit(period = FireflyXSettings.autoMsgCD) {
+                if (!login.contains(e.player.uniqueId)) {
+                    if (FireflyXAPI.databaseAuth.registered(e.player.uniqueId)) {
+                        e.player.sendLang("auth-login")
+                    } else {
+                        e.player.sendLang("auth-register")
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 拦截方块破坏
+     */
+    @SubscribeEvent
+    fun e(e: BlockBreakEvent) {
+        if (allow && !login.contains(e.player.uniqueId)) {
+            e.isCancelled = true
+        }
+    }
+
+    /**
+     * 拦截方块放置
+     */
+    @SubscribeEvent
+    fun e(e: BlockPlaceEvent) {
+        if (allow && !login.contains(e.player.uniqueId)) {
+            e.isCancelled = true
         }
     }
 
@@ -175,7 +212,9 @@ object Auth : Module {
      */
     @SubscribeEvent
     fun e(e: PlayerCommandPreprocessEvent) {
-        if (allow && !login.contains(e.player.uniqueId) && !(e.message.startsWith("/register ") || e.message.startsWith("/reg ") || e.message.startsWith("/r ") || e.message.startsWith(
+        if (allow && !login.contains(e.player.uniqueId) && !(e.message.startsWith("/register ") || e.message.startsWith(
+                "/reg "
+            ) || e.message.startsWith("/r ") || e.message.startsWith(
                 "/login "
             ) || e.message.startsWith("/l "))
         ) {

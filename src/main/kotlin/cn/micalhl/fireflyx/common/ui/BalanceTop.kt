@@ -1,4 +1,4 @@
-package cn.micalhl.fireflyx.internal.ui
+package cn.micalhl.fireflyx.common.ui
 
 import taboolib.common.platform.ProxyPlayer
 import taboolib.library.xseries.XMaterial

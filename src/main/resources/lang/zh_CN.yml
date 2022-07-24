@@ -1,6 +1,7 @@
 common-player-null: "&9&lFireflyX &e&l>> &f玩家不在线或不存在，请等待玩家上线或是检查大小写."
 
 teleport-random: "&9&lFireflyX &a&l>> &f已随机传送到 &c{0}&f."
+teleport-cd: "&9&lFireflyX &a&l>> &f传送将在 &c{0} &f秒内开始."
 tp-send: "&9&lFireflyX &a&l>> &f请求已发送。输入 &c/tpacancel {0} &f取消请求."
 tp-self: "&9&lFireflyX &e&l>> &f您不可以传送到您自己."
 tp-no-request: "&9&lFireflyX &e&l>> &f没有待处理的请求."
@@ -80,8 +81,8 @@ auth-register: "&9&lFireflyX &a&l>> &f尊敬的新玩家请您输入 &c/register
 auth-register-already: "&9&lFireflyX &a&l>> &f您已经注册过了!"
 auth-register-success: "&9&lFireflyX &a&l>> &f已成功注册!"
 auth-login: "&9&lFireflyX &a&l>> &f您已注册, 欢迎回来, 请登录输入 &c/login <密码>&f."
-auth-login-already: "&9&lFireflyX &a&l>> &f您已经登陆过了!"
-auth-login-success: "&9&lFireflyX &a&l>> &f已成功登陆!"
+auth-login-already: "&9&lFireflyX &a&l>> &f您已经登录过了!"
+auth-login-success: "&9&lFireflyX &a&l>> &f已成功登录!"
 auth-change-old: "&9&lFireflyX &a&l>> &f旧密码输入错误."
 auth-change-confirm: "&9&lFireflyX &a&l>> &f两次输入的密码不一致."
 auth-change-success: "&9&lFireflyX &a&l>> &f已成功更改!"

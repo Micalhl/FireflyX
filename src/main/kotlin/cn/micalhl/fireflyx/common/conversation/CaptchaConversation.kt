@@ -1,4 +1,4 @@
-package cn.micalhl.fireflyx.internal.conversation
+package cn.micalhl.fireflyx.common.conversation
 
 import org.bukkit.conversations.ConversationContext
 import org.bukkit.conversations.Prompt

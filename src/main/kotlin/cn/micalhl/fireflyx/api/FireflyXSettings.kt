@@ -14,7 +14,6 @@ object FireflyXSettings {
 
     @ConfigNode("TeleportCD")
     var teleportCD = 3
-        private set
 
     @ConfigNode("TeleportTime")
     var teleportTime = 120

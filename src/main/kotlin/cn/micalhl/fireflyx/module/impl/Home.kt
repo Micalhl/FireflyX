@@ -4,7 +4,7 @@ import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
 import taboolib.module.lang.sendLang
 import cn.micalhl.fireflyx.api.FireflyXAPI
-import cn.micalhl.fireflyx.internal.ui.HomeMenu
+import cn.micalhl.fireflyx.common.ui.HomeMenu
 import cn.micalhl.fireflyx.module.Module
 import cn.micalhl.fireflyx.util.parseLocation
 import cn.micalhl.fireflyx.util.parseString

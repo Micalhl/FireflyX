@@ -1,4 +1,4 @@
-package cn.micalhl.fireflyx.internal.database
+package cn.micalhl.fireflyx.common.database
 
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.function.getDataFolder

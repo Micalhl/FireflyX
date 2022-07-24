@@ -1,19 +1,12 @@
-package cn.micalhl.fireflyx.internal.compat
+package cn.micalhl.fireflyx.common.compat
 
 import net.milkbowl.vault.economy.AbstractEconomy
-import net.milkbowl.vault.economy.Economy
 import net.milkbowl.vault.economy.EconomyResponse
 import org.bukkit.OfflinePlayer
-import org.bukkit.plugin.ServicePriority
-import taboolib.common.LifeCycle
-import taboolib.common.platform.Awake
-import taboolib.common.platform.function.console
-import taboolib.module.lang.sendLang
 import cn.micalhl.fireflyx.api.FireflyXAPI
 import cn.micalhl.fireflyx.api.FireflyXSettings
 import cn.micalhl.fireflyx.util.plugin
 import java.text.DecimalFormat
-import cn.micalhl.fireflyx.module.impl.Money
 
 @Suppress("deprecation")
 class Vault : AbstractEconomy() {

@@ -1,4 +1,4 @@
-package cn.micalhl.fireflyx.internal.database
+package cn.micalhl.fireflyx.common.database
 
 import taboolib.common.platform.function.getDataFolder
 import taboolib.module.database.*

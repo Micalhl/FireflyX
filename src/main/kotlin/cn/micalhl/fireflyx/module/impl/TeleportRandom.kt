@@ -7,6 +7,7 @@ import org.bukkit.Location
 import org.bukkit.Material
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
+import taboolib.common.platform.function.submit
 import taboolib.common.util.random
 import taboolib.module.lang.sendLang
 import taboolib.platform.util.toBukkitLocation
@@ -27,15 +28,18 @@ object TeleportRandom : Module {
                 location.x = random(minX, maxX).toDouble()
                 location.z = random(minZ, maxZ).toDouble()
                 location.y = safeY(location.toBukkitLocation()).toDouble()
-                user.teleport(location)
-                user.sendLang("teleport-random", location.parseString())
+                user.sendLang("teleport-cd", FireflyXSettings.teleportCD)
+                submit(delay = FireflyXSettings.teleportCD.toLong() * 20L) {
+                    user.teleport(location)
+                    user.sendLang("teleport-random", location.parseString())
+                }
             }
         }
     }
 
     fun safeY(location: Location): Int {
         val legLoc = location.clone()
-        for (y in location.blockY..256 - location.blockY) {
+        for (y in 0..256) {
             legLoc.y = y.toDouble()
             val headLoc = legLoc.clone().add(0.0, 1.0, 0.0)
             val downLoc = legLoc.clone().add(0.0, -1.0, 0.0)

@@ -1,4 +1,4 @@
-package cn.micalhl.fireflyx.internal.command
+package cn.micalhl.fireflyx.common.command
 
 import taboolib.common.platform.command.CommandBody
 import taboolib.common.platform.command.CommandHeader

@@ -1,8 +1,8 @@
 package cn.micalhl.fireflyx.api
 
-import cn.micalhl.fireflyx.internal.database.DatabaseEconomy
-import cn.micalhl.fireflyx.internal.database.DatabaseHome
-import cn.micalhl.fireflyx.internal.database.DatabaseAuth
+import cn.micalhl.fireflyx.common.database.DatabaseEconomy
+import cn.micalhl.fireflyx.common.database.DatabaseHome
+import cn.micalhl.fireflyx.common.database.DatabaseAuth
 
 object FireflyXAPI {
 

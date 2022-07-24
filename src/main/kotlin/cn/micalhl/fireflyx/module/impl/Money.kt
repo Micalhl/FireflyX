@@ -15,9 +15,9 @@ import taboolib.module.lang.sendLang
 import taboolib.platform.compat.*
 import taboolib.platform.util.onlinePlayers
 import cn.micalhl.fireflyx.api.FireflyXSettings
-import cn.micalhl.fireflyx.internal.compat.Vault
-import cn.micalhl.fireflyx.internal.conversation.CaptchaConversation
-import cn.micalhl.fireflyx.internal.ui.BalanceTop
+import cn.micalhl.fireflyx.common.compat.Vault
+import cn.micalhl.fireflyx.common.conversation.CaptchaConversation
+import cn.micalhl.fireflyx.common.ui.BalanceTop
 import cn.micalhl.fireflyx.module.Module
 import cn.micalhl.fireflyx.util.isDouble
 import cn.micalhl.fireflyx.util.plugin
