@@ -44,7 +44,7 @@ object AuthEvents {
                     return
                 }
                 // 已经在线
-                if (onlinePlayers().any { user == e.uniqueId }) {
+                if (onlinePlayers().map { it.name }.any { it == e.name }) {
                     e.disallow(
                         AsyncPlayerPreLoginEvent.Result.KICK_OTHER, console().asLangText("auth-online", offline.name!!)
                     )
