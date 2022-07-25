@@ -1,4 +1,4 @@
-![FireflyX.png](https://gitee.com/micalhl/File0/raw/master/FireflyX.png)
+![FireflyX.png](https://s2.loli.net/2022/07/25/FSDnOzUB3xjX2KR.png)
 
 # FireflyX
 
