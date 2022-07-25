@@ -70,6 +70,10 @@ object MoneyCommand {
                             user.sendLang("economy-pay-failed")
                             return@execute
                         }
+                        if (!(player.toBKPlayer()!!.getBalance() < money.toDouble())) {
+                            user.sendLang("econoomy-pay-not-enough")
+                            return@execute
+                        }
                         user.sendLang("economy-pay-captcha", name, money, Settings.currencyName)
                         ConversationFactory(plugin())
                             .withFirstPrompt(CaptchaConversation(user) {

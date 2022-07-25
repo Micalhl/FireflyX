@@ -39,7 +39,7 @@ object TpaCommand {
                 }
             }
         }
-        command("Tpa.tpahere") {
+        command("tpahere") {
             dynamic(commit = "player") {
                 suggestion<ProxyPlayer>(uncheck = true) { _, _ ->
                     onlinePlayers().map { it.name }
@@ -116,14 +116,14 @@ object TpaCommand {
                     return@execute
                 }
                 if (Tpa.tpahere[user.uniqueId]!!) {
-                    user.sendLang("tpahere-accpet-self", Settings.teleportCD)
+                    user.sendLang("tpahere-accept-self", Settings.teleportCD)
                     player.sendLang("tpahere-accept")
                     submit(delay = Settings.teleportCD * 20L) {
                         user.teleport(player.location)
                     }
                 } else {
-                    user.sendLang("tpa-accpet-self")
-                    player.sendLang("tpa-accpet", Settings.teleportCD)
+                    user.sendLang("tpa-accept-self")
+                    player.sendLang("tpa-accept", Settings.teleportCD)
                     submit(delay = Settings.teleportCD * 20L) {
                         player.teleport(user.location)
                     }
