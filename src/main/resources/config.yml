@@ -8,3 +8,4 @@ Spawn: "FirstEnable"
 AuthMsgCD: 3
 AuthKickDelay: 20
 TeleportRandomRadius: 25000
+AtColor: "&c"

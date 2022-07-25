@@ -1,6 +1,12 @@
+At:
+  enable: true
+  name: "艾特功能"
 Auth:
   enable: true
   name: "注册登录模块"
+Back:
+  enable: true
+  name: "返回功能"
 DispenserPatch:
   enable: true
   name: "发射器修复"
@@ -16,6 +22,9 @@ JoinQuitTip:
 Money:
   enable: true
   name: "经济系统"
+Motd:
+  enable: true
+  name: "进服信息"
 OneKeySellItem:
   enable: true
   name: "一键售卖物品"

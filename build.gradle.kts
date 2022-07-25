@@ -19,7 +19,7 @@ taboolib {
     install("platform-bukkit")
     install("expansion-command-helper")
     classifier = null
-    version = "6.0.9-25"
+    version = "test-0723-2"
 
     description {
         contributors {
@@ -32,6 +32,7 @@ taboolib {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven { url = uri("https://jitpack.io") }
     maven {

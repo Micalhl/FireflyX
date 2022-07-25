@@ -13,6 +13,7 @@ object SpawnCommand {
         command("spawn") {
             execute<ProxyPlayer> { user, _, _ ->
                 user.teleport(Settings.spawn.parseLocation())
+                user.sendLang("teleport-spawn")
             }
         }
         command("setspawn") {

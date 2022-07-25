@@ -51,4 +51,8 @@ object Settings {
     @ConfigNode("TeleportRandomRadius")
     var teleportRandomRadius = 25000
         private set
+
+    @ConfigNode("AtColor")
+    var atColor = "&c"
+        private set
 }

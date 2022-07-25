@@ -18,6 +18,7 @@ plugin-reloaded: "&9&lFireflyX &a&l>> &f已重新载入主配置文件及语言�
 
 common-player-null: "&9&lFireflyX &e&l>> &f玩家不在线或不存在，请等待玩家上线或是检查大小写."
 
+teleport-spawn: "&9&lFireflyX &a&l>> &f已将您传送回世界重生点."
 teleport-random: "&9&lFireflyX &a&l>> &f已随机传送到 &c{0}&f."
 teleport-cd: "&9&lFireflyX &a&l>> &f传送将在 &c{0} &f秒内开始."
 tp-send: "&9&lFireflyX &a&l>> &f请求已发送。输入 &c/tpacancel {0} &f取消请求."
@@ -97,11 +98,23 @@ auth-online: "玩家 &c{0} &f已经在线了!"
 auth-regex: "用户名只能包含字母, 数字和下划线!"
 auth-kick-delay: "超过规定登陆时间, 请重新进入服务器!"
 auth-register: "&9&lFireflyX &a&l>> &f尊敬的新玩家请您输入 &c/register <密码> <确认密码> &f来注册."
-auth-register-already: "&9&lFireflyX &a&l>> &f您已经注册过了!"
+auth-register-already: "&9&lFireflyX &e&l>> &f您已经注册过了!"
 auth-register-success: "&9&lFireflyX &a&l>> &f已成功注册!"
 auth-login: "&9&lFireflyX &a&l>> &f您已注册, 欢迎回来, 请登录输入 &c/login <密码>&f."
-auth-login-already: "&9&lFireflyX &a&l>> &f您已经登录过了!"
+auth-login-already: "&9&lFireflyX &e&l>> &f您已经登录过了!"
 auth-login-success: "&9&lFireflyX &a&l>> &f已成功登录!"
-auth-change-old: "&9&lFireflyX &a&l>> &f旧密码输入错误."
-auth-change-confirm: "&9&lFireflyX &a&l>> &f两次输入的密码不一致."
+auth-change-old: "&9&lFireflyX &e&l>> &f旧密码输入错误."
+auth-change-confirm: "&9&lFireflyX &e&l>> &f两次输入的密码不一致."
 auth-change-success: "&9&lFireflyX &a&l>> &f已成功更改!"
+
+back: "&9&lFireflyX &a&l>> &f已返回上一处位置."
+back-fail: "&9&lFireflyX &e&l>> &f没有已保存的位置."
+back-death: "&9&lFireflyX &e&l>> &f使用 &c/back &f返回上一处位置."
+
+at-receive: "&9&lFireflyX &a&l>> &c{0} &f在聊天栏@了你."
+
+motd:
+  - "&6Welcome, %player%&6!"
+  - "&6Type &c/help&6 for a list of commands."
+  - "&6Type &c/list&6 to see who else is online."
+  - "&6Players online:&c %online% &6- World time:&c %worldtime%"
