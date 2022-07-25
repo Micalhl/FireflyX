@@ -1,6 +1,7 @@
 package cn.micalhl.fireflyx.module.home
 
 import cn.micalhl.fireflyx.api.FireflyXAPI
+import cn.micalhl.fireflyx.module.back.Back
 import cn.micalhl.fireflyx.module.home.ui.HomeMenu
 import cn.micalhl.fireflyx.util.parseLocation
 import cn.micalhl.fireflyx.util.parseString
@@ -22,8 +23,9 @@ object HomeCommand {
                         user.sendLang("home-unknown", name)
                         return@execute
                     }
-                    val home = FireflyXAPI.homeDatabase.get(name, user.uniqueId)
-                    user.teleport(home!!.location.parseLocation())
+                    val home = FireflyXAPI.homeDatabase.get(name, user.uniqueId)!!
+                    if (Back.allow) Back.dataMap[user.uniqueId] = user.location.parseString()
+                    user.teleport(home.location.parseLocation())
                     user.sendLang("home-success", name)
                 }
             }
@@ -36,6 +38,7 @@ object HomeCommand {
                     HomeMenu.open(user)
                 } else {
                     val home = FireflyXAPI.homeDatabase.get(user.uniqueId)[0]
+                    if (Back.allow) Back.dataMap[user.uniqueId] = user.location.parseString()
                     user.teleport(home.location.parseLocation())
                     user.sendLang("home-success", home.name)
                 }

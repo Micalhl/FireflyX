@@ -1,7 +1,9 @@
 package cn.micalhl.fireflyx.module.tpa
 
 import cn.micalhl.fireflyx.common.config.Settings
+import cn.micalhl.fireflyx.module.back.Back
 import cn.micalhl.fireflyx.util.getKeys
+import cn.micalhl.fireflyx.util.parseString
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
 import taboolib.common.platform.function.getProxyPlayer
@@ -118,12 +120,14 @@ object TpaCommand {
                 if (Tpa.tpahere[user.uniqueId]!!) {
                     user.sendLang("tpahere-accept-self", Settings.teleportCD)
                     player.sendLang("tpahere-accept")
+                    if (Back.allow) Back.dataMap[user.uniqueId] = user.location.parseString()
                     submit(delay = Settings.teleportCD * 20L) {
                         user.teleport(player.location)
                     }
                 } else {
                     user.sendLang("tpa-accept-self")
                     player.sendLang("tpa-accept", Settings.teleportCD)
+                    if (Back.allow) Back.dataMap[player.uniqueId] = player.location.parseString()
                     submit(delay = Settings.teleportCD * 20L) {
                         player.teleport(user.location)
                     }

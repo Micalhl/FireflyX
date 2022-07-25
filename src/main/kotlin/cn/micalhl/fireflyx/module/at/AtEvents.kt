@@ -15,7 +15,7 @@ object AtEvents {
     @SubscribeEvent
     fun e(e: AsyncPlayerChatEvent) {
         val message = e.message
-        if (e.message.contains("@")) {
+        if (At.allow && e.message.contains("@")) {
             val index = message.indexOf("@")
             val left = message.substring(0, index)
             val right = message.substring(index)

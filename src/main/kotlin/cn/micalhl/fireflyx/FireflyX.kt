@@ -15,7 +15,7 @@ object FireflyX : Plugin() {
         console().sendLang("plugin-loading", plugin().server.version)
         ModuleManager.init()
         Money.hook()
-        console().sendLang("plugin-enabled", "$pluginVersion")
+        console().sendLang("plugin-enabled", pluginVersion)
     }
 
     override fun onDisable() {

@@ -12,7 +12,6 @@ object MotdEvents {
         if (Motd.allow) {
             e.player.sendLang("motd") {
                 it?.replace("%player%", e.player.name)?.replace("%online%", onlinePlayers().size.toString())
-                    ?.replace("%worldtime%", "上午1:61")
             }
         }
     }

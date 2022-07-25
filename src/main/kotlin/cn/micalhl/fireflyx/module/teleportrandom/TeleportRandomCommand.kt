@@ -1,6 +1,7 @@
 package cn.micalhl.fireflyx.module.teleportrandom
 
 import cn.micalhl.fireflyx.common.config.Settings
+import cn.micalhl.fireflyx.module.back.Back
 import cn.micalhl.fireflyx.util.parseString
 import taboolib.common.platform.ProxyPlayer
 import taboolib.common.platform.command.command
@@ -23,6 +24,7 @@ object TeleportRandomCommand {
                 location.z = random(minZ, maxZ).toDouble()
                 location.y = location.toBukkitLocation().getSafeY().toDouble()
                 user.sendLang("teleport-cd", Settings.teleportCD)
+                if (Back.allow) Back.dataMap[user.uniqueId] = user.location.parseString()
                 submit(delay = Settings.teleportCD.toLong() * 20L) {
                     user.teleport(location)
                     user.sendLang("teleport-random", location.parseString())
