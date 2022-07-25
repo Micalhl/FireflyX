@@ -1,4 +1,4 @@
-![FireflyX-100.png](https://s2.loli.net/2022/07/25/j5lwRFv4Z6mzGEV.png)
+![FireflyX.png](https://s2.loli.net/2022/07/25/mz3LBybCPiwfEMF.png)
 
 # FireflyX
 
