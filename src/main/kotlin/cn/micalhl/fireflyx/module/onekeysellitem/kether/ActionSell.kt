@@ -16,7 +16,7 @@ class ActionSell(private val material: Material, private val price: Double) : Sc
 
     companion object {
 
-        @KetherParser(["onekeysellitem"], shared = true)
+        @KetherParser(["sell"], shared = true)
         fun parser() = scriptParser {
             it.switch {
                 case("item") {
@@ -26,7 +26,7 @@ class ActionSell(private val material: Material, private val price: Double) : Sc
                     } ?: Material.AIR
                     val amount = it.run {
                         it.mark()
-                        it.expect("amount")
+                        it.expect("price")
                         it.nextDouble()
                     }
                     ActionSell(material, amount)
