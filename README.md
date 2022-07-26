@@ -1,10 +1,13 @@
-![FireflyX.png](https://s2.loli.net/2022/07/25/FSDnOzUB3xjX2KR.png)
+<div align="center">
+<img src="http://imgpub.hhhhhy.kim/2022/07/26/62df8738a2620.png" alt="FireflyX.png" title="FireflyX.png" />
 
-# FireflyX
+----
 
-一个轻量级的基础插件, 功能目前不算多, 但是会慢慢开发出更多的功能. 
+FireflyX 是一个轻量的基础插件, 功能目前不算多, 但是会慢慢开发出更多的功能.
+</div>
 
 ## 特色
+
 - 多版本支持. 支持 `1.12-1.19` 的所有版本, 其他版本暂未测试.
 - 模块化. 所有功能都可以在 `modules.yml` 中独立开启或关闭.
 - 语言自定义. 可以配置多国语言, 且几乎所有提示信息都可以在语言文件中配置.

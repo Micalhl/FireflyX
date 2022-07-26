@@ -43,7 +43,7 @@ object ModuleManager {
         Tps
     )
 
-    private val loaded = arrayListOf<String>()
+    val loaded = arrayListOf<String>()
 
     fun init() {
         modules.filter { Modules.conf.getBoolean("${it.javaClass.simpleName}.enable") }.forEach {

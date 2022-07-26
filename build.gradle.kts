@@ -16,6 +16,7 @@ taboolib {
     install("module-nms")
     install("module-nms-util")
     install("module-kether")
+    install("module-metrics")
     install("platform-bukkit")
     install("expansion-command-helper")
     classifier = null
