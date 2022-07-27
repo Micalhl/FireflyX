@@ -31,6 +31,9 @@ object AtEvents {
                 }
                 return
             }
+            if (e.player.name == name) {
+                return
+            }
             val target = plugin().server.getPlayerExact(name)
             if (target != null) {
                 e.message = e.message.replace("@$name", "${Settings.atColor}@$name&r".colored())
