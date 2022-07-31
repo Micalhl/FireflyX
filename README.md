@@ -34,8 +34,16 @@ FireflyX 是一个轻量的基础插件, 功能目前不算多, 但是会慢慢�
 ## 部分截图
 
 ![image.png](https://s2.loli.net/2022/07/25/tcBgYb76pnoDFO9.png)
+![iShot_2022-07-31_13.12.09.png](https://s2.loli.net/2022/07/31/KYgi9cfPFvGbECw.png)
+![iShot_2022-07-31_13.16.44.png](https://s2.loli.net/2022/07/31/wZWzUo8t3SFhDMe.png)
+![iShot_2022-07-31_13.16.53.png](https://s2.loli.net/2022/07/31/2vewOtikchqPS3A.png)
+![iShot_2022-07-31_13.17.17.png](https://s2.loli.net/2022/07/31/edkgVfn1FSP46XD.png)
+![iShot_2022-07-31_13.17.45.png](https://s2.loli.net/2022/07/31/NFCfsgkjVqI5iXW.png)
+![iShot_2022-07-31_13.18.22.png](https://s2.loli.net/2022/07/31/w5ptsZnCe9FNVbT.png)
 
 ## 获取
+
+开源地址: https://github.com/Micalhl/FireflyX
 
 FireflyX 是免费的, 你可以通过以下步骤自行构建插件.
 
