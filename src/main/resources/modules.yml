@@ -37,6 +37,9 @@ Ping:
 Spawn:
   enable: true
   name: "主城功能"
+Stops:
+  enable: true
+  name: "安全关闭服务器"
 TeleportRandom:
   enable: true
   name: "随机传送"

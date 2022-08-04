@@ -117,3 +117,11 @@ motd:
   - "&9&lFireflyX &a&l>> &f欢迎你 &a%player%&f!"
   - "&9&lFireflyX &a&l>> &f当前在线人数为 &a%online%&f."
   - "&9&lFireflyX &a&l>> &f祝你游戏愉快~"
+
+stops-run: "&9&lFireflyX &a&l>> &f计划任务已运行, 服务器将在 &c{0} &f秒后关闭."
+stops-message: "&4>>>服务器将在&3{0}&4秒后关闭,请停下手中的事,不要将东西扔地上<<<"
+stops-is-cancelled: "&9&lFireflyX &e&l>> &f计划任务已取消或不存在."
+stops-cancelled: "&9&lFireflyX &a&l>> &f计划任务已取消."
+stops-time-short: "&9&lFireflyX &e&l>> &f时间不能短于1秒."
+stops-is-running: "&9&lFireflyX &e&l>> &f计划任务正在运行."
+stops-is-not-int: "&9&lFireflyX &e&l>> &f你输入的时间不是数字."

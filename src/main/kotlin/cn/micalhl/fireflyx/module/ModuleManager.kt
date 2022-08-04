@@ -15,6 +15,7 @@ import cn.micalhl.fireflyx.module.onekeysellitem.OneKeySellItem
 import cn.micalhl.fireflyx.module.online.Online
 import cn.micalhl.fireflyx.module.ping.Ping
 import cn.micalhl.fireflyx.module.spawn.Spawn
+import cn.micalhl.fireflyx.module.stops.Stops
 import cn.micalhl.fireflyx.module.teleportrandom.TeleportRandom
 import cn.micalhl.fireflyx.module.tpa.Tpa
 import cn.micalhl.fireflyx.module.tps.Tps
@@ -38,6 +39,7 @@ object ModuleManager {
         Online,
         Ping,
         Spawn,
+        Stops,
         TeleportRandom,
         Tpa,
         Tps
