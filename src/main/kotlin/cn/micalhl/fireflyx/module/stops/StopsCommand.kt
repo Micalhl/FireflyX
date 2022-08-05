@@ -1,7 +1,6 @@
 package cn.micalhl.fireflyx.module.stops
 
 import cn.micalhl.fireflyx.util.plugin
-import org.bukkit.Bukkit
 import taboolib.common.platform.ProxyCommandSender
 import taboolib.common.platform.command.command
 import taboolib.common.platform.function.console
@@ -49,7 +48,7 @@ object StopsCommand {
                         user.sendLang("stops-run", time)
                         schedule(time.toInt())
                     } else {
-                        user.sendLang("stops-is-not-int")
+                        user.sendLang("common-int-argument-error")
                     }
                 }
             }
@@ -61,7 +60,7 @@ object StopsCommand {
         }
     }
 
-    fun schedule(period: Int) {
+    private fun schedule(period: Int) {
         var time = period
         submit(period = 20L) {
             if (!stopping) cancel()

@@ -20,10 +20,58 @@ import taboolib.platform.compat.getBalance
 import taboolib.platform.compat.hasAccount
 import taboolib.platform.compat.withdrawBalance
 import taboolib.platform.util.onlinePlayers
+import taboolib.platform.util.sendLang
 
 object MoneyCommand {
 
     fun register() {
+        // /<eco/money> <give/take/set> <player> <amount>
+        command(name = "money", aliases = listOf("eco", "economy")) {
+            // give/take/set context.argument(-2)
+            dynamic(commit = "give/take/set") {
+                suggestion<ProxyCommandSender> { _, _ ->
+                    listOf("give", "take", "set")
+                }
+                // player context.argument(-1)
+                dynamic(commit = "player") {
+                    suggestion<ProxyCommandSender>(uncheck = true) { _, _ ->
+                        onlinePlayers().map { it.name }
+                    }
+                    // amount context.argument(0)
+                    dynamic(commit = "amount") {
+                        execute<ProxyCommandSender> { user, context, _ ->
+                            val target = plugin().server.getPlayerExact(context.argument(-1))
+                            if (target == null) {
+                                user.sendLang("common-player-null")
+                                return@execute
+                            }
+                            val amount = context.argument(0)
+                            if (!amount.isDouble()) {
+                                user.sendLang("common-int-argument-error")
+                                return@execute
+                            }
+                            when (context.argument(-2).lowercase()) {
+                                "give" -> {
+                                    target.depositBalance(amount.toDouble())
+                                    user.sendLang("economy-add", target.name, amount, Settings.currencyName)
+                                    target.sendLang("ecomony-add-by-operator", amount, Settings.currencyName)
+                                }
+                                "take" -> {
+                                    target.withdrawBalance(amount.toDouble())
+                                    user.sendLang("economy-take", target.name, amount, Settings.currencyName)
+                                    target.sendLang("ecomony-take-by-operator", amount, Settings.currencyName)
+                                }
+                                "set" -> {
+                                    target.depositBalance(amount.toDouble() - target.getBalance())
+                                    user.sendLang("economy-set", target.name, amount, Settings.currencyName)
+                                    target.sendLang("ecomony-set-by-operator", amount, Settings.currencyName)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         command(name = "balance", aliases = listOf("bal")) {
             dynamic(optional = true, commit = "player") {
                 suggestion<ProxyCommandSender>(uncheck = true) { _, _ ->
@@ -67,7 +115,7 @@ object MoneyCommand {
                             return@execute
                         }
                         if (!money.isDouble()) {
-                            user.sendLang("economy-pay-failed")
+                            user.sendLang("common-int-argument-error")
                             return@execute
                         }
                         if (player.toBKPlayer()!!.getBalance() < money.toDouble()) {

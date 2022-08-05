@@ -17,6 +17,7 @@ plugin-enabled: "&9&lFireflyX &a&l>> &f插件启动. 当前运行版本 &av{0}&f
 plugin-reloaded: "&9&lFireflyX &a&l>> &f已重新载入主配置文件及语言文件."
 
 common-player-null: "&9&lFireflyX &e&l>> &f玩家不在线或不存在，请等待玩家上线或是检查大小写."
+common-int-argument-error: "&9&lFireflyX &e&l>> &f你输入的不是数字!"
 
 teleport-spawn: "&9&lFireflyX &a&l>> &f已将您传送回世界重生点."
 teleport-random: "&9&lFireflyX &a&l>> &f已随机传送到 &c{0}&f."
@@ -69,6 +70,12 @@ economy-pay-captcha: "&9&lFireflyX &a&l>> &f您正在向玩家 &c{0} &f转账 &c
 economy-pay-success: "&9&lFireflyX &a&l>> &f您成功向玩家 &c{0} &f转账了 &c{1} {2}&f."
 economy-pay-receive: "&9&lFireflyX &a&l>> &f您收到了来自玩家 &c{0} &f转账的 &c{1} {2}&f."
 economy-pay-not-enough: "&9&lFireflyX &a&l>> &f您的账户余额不足, 无法完成转账."
+economy-add: "&9&lFireflyX &a&l>> &f您已向玩家 &c{0} &f增加了 &c{1} {2}&f."
+economy-add-by-operator: "&9&lFireflyX &a&l>> &f您的账户余额增加了 &c{0} {1}&f."
+economy-take: "&9&lFireflyX &a&l>> &f您已向玩家 &c{0} &f减少了 &c{1} {2}&f."
+economy-take-by-operator: "&9&lFireflyX &a&l>> &f您的账户余额减少了 &c{0} {1}&f."
+economy-set: "&9&lFireflyX &a&l>> &f您已设置玩家 &c{0} &f的账户余额为 &c{1} {2}&f."
+economy-set-by-operator: "&9&lFireflyX &a&l>> &f您的账户余额被设置为 &c{0} {1}&f."
 
 captcha: "&9&lFireflyX &a&l>> &f验证码: &c{0}&f."
 captcha-cancel: "&9&lFireflyX &a&l>> &f您取消了操作."
@@ -124,4 +131,6 @@ stops-is-cancelled: "&9&lFireflyX &e&l>> &f计划任务已取消或不存在."
 stops-cancelled: "&9&lFireflyX &a&l>> &f计划任务已取消."
 stops-time-short: "&9&lFireflyX &e&l>> &f时间不能短于1秒."
 stops-is-running: "&9&lFireflyX &e&l>> &f计划任务正在运行."
-stops-is-not-int: "&9&lFireflyX &e&l>> &f你输入的时间不是数字."
+
+onekeysellitem: "&9&lFireflyX &a&l>> &f您卖出了 &c{0} &f件 &c{1} &f. 花费了 &c{2} {4} &f后您当前剩余 &c{3} {4}&f."
+onekeysellitem-material-error: "&9&lFireflyX &e&l>> &f您输入的物品不存在!"

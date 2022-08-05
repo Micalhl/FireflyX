@@ -1,5 +1,6 @@
 package cn.micalhl.fireflyx.module.onekeysellitem
 
+import cn.micalhl.fireflyx.common.config.Settings
 import cn.micalhl.fireflyx.util.isDouble
 import cn.micalhl.fireflyx.util.toBKPlayer
 import org.bukkit.Material
@@ -24,11 +25,11 @@ object OneKeySellItemCommand {
                             return@execute
                         }
                         if (!price.isDouble()) {
-                            user.sendLang("onekeysellitem-price-error")
+                            user.sendLang("common-int-argument-error")
                             return@execute
                         }
                         val result = user.oneKeySellItem(name, price.toDouble())
-                        user.sendLang("onekeysellitem", result, ItemStack(Material.getMaterial(name)!!), result, user.toBKPlayer()!!.getBalance())
+                        user.sendLang("onekeysellitem", result, ItemStack(Material.getMaterial(name)!!), price.toDouble() * result, user.toBKPlayer()!!.getBalance(), Settings.currencyName)
                     }
                 }
             }

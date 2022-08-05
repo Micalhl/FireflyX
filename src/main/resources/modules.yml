@@ -39,7 +39,7 @@ Spawn:
   name: "主城功能"
 Stops:
   enable: true
-  name: "安全关闭服务器"
+  name: "安全延时关闭服务器功能"
 TeleportRandom:
   enable: true
   name: "随机传送"
