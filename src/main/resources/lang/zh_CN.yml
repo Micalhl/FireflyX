@@ -121,8 +121,8 @@ back-death: "&9&lFireflyX &e&l>> &f使用 &c/back &f返回上一处位置."
 at-receive: "&9&lFireflyX &a&l>> &c{0} &f在聊天栏@了你."
 
 motd:
-  - "&9&lFireflyX &a&l>> &f欢迎你 &a%player%&f!"
-  - "&9&lFireflyX &a&l>> &f当前在线人数为 &a%online%&f."
+  - "&9&lFireflyX &a&l>> &f欢迎你 &a{player}&f!"
+  - "&9&lFireflyX &a&l>> &f当前在线人数为 &a{online}&f."
   - "&9&lFireflyX &a&l>> &f祝你游戏愉快~"
 
 stops-run: "&9&lFireflyX &a&l>> &f计划任务已运行, 服务器将在 &c{0} &f秒后关闭."

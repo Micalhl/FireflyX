@@ -64,7 +64,7 @@ object StopsCommand {
         var time = period
         submit(period = 20L) {
             if (!stopping) cancel()
-            plugin().server.broadcastMessage(console().asLangText("stops-message", period).colored())
+            plugin().server.broadcastMessage(console().asLangText("stops-message", time).colored())
             time--
             if (time == 0) {
                 onlinePlayers().forEach { it.kick(plugin().server.shutdownMessage ?: "Server closed") }
