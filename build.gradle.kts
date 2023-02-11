@@ -65,3 +65,25 @@ configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
+
+publishing {
+    repositories {
+        maven {
+            isAllowInsecureProtocol = true
+            url = uri("http://repo.mcstarrysky.com:10086/repository/releases")
+            credentials {
+                username = System.getProperty("publishingUser")
+                password = System.getProperty("publishingPwd")
+            }
+            authentication {
+                create<BasicAuthentication>("basic")
+            }
+        }
+    }
+    publications {
+        create<MavenPublication>("library") {
+            from(components["java"])
+            groupId = project.group.toString()
+        }
+    }
+}

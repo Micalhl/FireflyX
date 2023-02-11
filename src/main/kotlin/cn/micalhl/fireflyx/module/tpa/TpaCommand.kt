@@ -15,7 +15,7 @@ object TpaCommand {
 
     fun register() {
         command("tpa") {
-            dynamic(commit = "player") {
+            dynamic(comment = "player") {
                 suggestion<ProxyPlayer>(uncheck = true) { _, _ ->
                     onlinePlayers().map { it.name }
                 }
@@ -42,7 +42,7 @@ object TpaCommand {
             }
         }
         command("tpahere") {
-            dynamic(commit = "player") {
+            dynamic(comment = "player") {
                 suggestion<ProxyPlayer>(uncheck = true) { _, _ ->
                     onlinePlayers().map { it.name }
                 }
@@ -69,7 +69,7 @@ object TpaCommand {
             }
         }
         command("tpacancel") {
-            dynamic(commit = "player") {
+            dynamic(comment = "player") {
                 suggestion<ProxyPlayer>(uncheck = true) { user, _ ->
                     Tpa.tpaData.getKeys(user.uniqueId).filter { getProxyPlayer(it) != null }
                         .map { getProxyPlayer(it)!!.name }
