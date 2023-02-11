@@ -16,7 +16,7 @@ object StopsCommand {
     var stopping = false
 
     fun register() {
-        command("stops") {
+        command("stops", permission = "fireflyx.command.stops") {
             literal("cancel") {
                 execute<ProxyCommandSender> { user, _, _ ->
                     if (!stopping) {
