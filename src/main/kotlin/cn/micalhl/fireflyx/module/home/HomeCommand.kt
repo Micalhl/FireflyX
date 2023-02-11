@@ -13,7 +13,7 @@ object HomeCommand {
 
     fun register() {
         command("home") {
-            dynamic(optional = true, commit = "name") {
+            dynamic(optional = true, comment = "name") {
                 suggestion<ProxyPlayer>(uncheck = true) { user, _ ->
                     FireflyXAPI.homeDatabase.get(user.uniqueId).map { it.name }
                 }
@@ -45,7 +45,7 @@ object HomeCommand {
             }
         }
         command("sethome") {
-            dynamic(optional = true, commit = "name") {
+            dynamic(optional = true, comment = "name") {
                 execute<ProxyPlayer> { user, context, _ ->
                     val name = context.argument(0)
                     val location = user.location.parseString()
@@ -60,7 +60,7 @@ object HomeCommand {
             }
         }
         command("delhome") {
-            dynamic(commit = "home") {
+            dynamic(comment = "home") {
                 suggestion<ProxyPlayer>(uncheck = true) { user, _ ->
                     FireflyXAPI.homeDatabase.get(user.uniqueId).map { it.name }
                 }

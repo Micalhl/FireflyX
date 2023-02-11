@@ -9,8 +9,8 @@ object AuthCommand {
 
     fun register() {
         command("register", aliases = listOf("reg", "r")) {
-            dynamic(commit = "password") {
-                dynamic(commit = "confirm") {
+            dynamic(comment = "password") {
+                dynamic(comment = "confirm") {
                     execute<ProxyPlayer> { user, context, _ ->
                         if (FireflyXAPI.authDatabase.registered(user.uniqueId)) {
                             user.sendLang("auth-register-already")
@@ -30,7 +30,7 @@ object AuthCommand {
             }
         }
         command("login", aliases = listOf("l")) {
-            dynamic(commit = "password") {
+            dynamic(comment = "password") {
                 execute<ProxyPlayer> { user, context, _ ->
                     if (Auth.login.contains(user.uniqueId)) {
                         user.sendLang("auth-login-already")
@@ -48,9 +48,9 @@ object AuthCommand {
             }
         }
         command("changepassword") {
-            dynamic(commit = "old") {
-                dynamic(commit = "new") {
-                    dynamic(commit = "confirm") {
+            dynamic(comment = "old") {
+                dynamic(comment = "new") {
+                    dynamic(comment = "confirm") {
                         execute<ProxyPlayer> { user, context, _ ->
                             val old = context.argument(-2)
                             val new = context.argument(-1)

@@ -13,10 +13,10 @@ import taboolib.platform.compat.getBalance
 object OneKeySellItemCommand {
 
     fun register() {
-        command("onekeysellitem") {
-            dynamic(commit = "material") {
+        command("onekeysellitem", permission = "fireflyx.command.onekeysellitem") {
+            dynamic(comment = "material") {
                 suggestion<ProxyPlayer> { user, _ -> Material.values().map { it.name } }
-                dynamic(commit = "price") {
+                dynamic(comment = "price") {
                     execute<ProxyPlayer> { user, context, _ ->
                         val name = context.argument(-1)
                         val price = context.argument(0)

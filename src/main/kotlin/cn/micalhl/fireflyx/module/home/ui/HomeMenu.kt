@@ -6,19 +6,20 @@ import taboolib.library.xseries.XMaterial
 import taboolib.module.ui.openMenu
 import taboolib.module.ui.type.Linked
 import taboolib.platform.util.buildItem
-import taboolib.platform.util.inventoryCenterSlots
 import cn.micalhl.fireflyx.api.FireflyXAPI
 import cn.micalhl.fireflyx.module.home.database.HomeDatabase
 import cn.micalhl.fireflyx.util.parseLocation
 import cn.micalhl.fireflyx.util.toBKPlayer
+import taboolib.platform.util.Slots
 
 object HomeMenu {
 
     fun open(user: ProxyPlayer) {
         user.toBKPlayer()!!.closeInventory()
         user.toBKPlayer()!!.openMenu<Linked<HomeDatabase.Home>>("") {
+            virtualize() // 发包 UI
             rows(6)
-            slots(inventoryCenterSlots)
+            slots(Slots.CENTER)
             handLocked(true)
             elements {
                 FireflyXAPI.homeDatabase.get(user.uniqueId)

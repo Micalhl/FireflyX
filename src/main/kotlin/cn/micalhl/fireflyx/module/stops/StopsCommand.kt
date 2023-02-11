@@ -27,7 +27,7 @@ object StopsCommand {
                     user.sendLang("stops-cancelled")
                 }
             }
-            dynamic(commit = "time", optional = true) {
+            dynamic(comment = "time", optional = true) {
                 suggestion<ProxyCommandSender>(uncheck = true) { _, _ ->
                     val list = arrayListOf<String>()
                     (1..60).forEach { list.add(it.toString()) }

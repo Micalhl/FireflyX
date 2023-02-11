@@ -7,9 +7,9 @@ import taboolib.module.ui.type.Linked
 import taboolib.platform.compat.getBalance
 import taboolib.platform.compat.hasAccount
 import taboolib.platform.util.buildItem
-import taboolib.platform.util.inventoryCenterSlots
 import cn.micalhl.fireflyx.util.plugin
 import cn.micalhl.fireflyx.util.toBKPlayer
+import taboolib.platform.util.Slots
 import java.util.UUID
 
 object BalanceTop {
@@ -18,7 +18,7 @@ object BalanceTop {
         user.toBKPlayer()!!.closeInventory()
         user.toBKPlayer()!!.openMenu<Linked<UUID>>("") {
             rows(6)
-            slots(inventoryCenterSlots)
+            slots(Slots.CENTER)
             handLocked(true)
             elements {
                 plugin().server.offlinePlayers.map { it.uniqueId }

@@ -18,7 +18,7 @@ object SpawnCommand {
                 user.sendLang("teleport-spawn")
             }
         }
-        command("setspawn") {
+        command("setspawn", permission = "fireflyx.command.setspawn") {
             execute<ProxyPlayer> { user, _, _ ->
                 Settings.spawn = user.location.parseString()
                 user.sendLang("setspawn")

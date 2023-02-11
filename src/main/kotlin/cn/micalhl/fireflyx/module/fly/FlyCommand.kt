@@ -11,7 +11,7 @@ object FlyCommand {
 
     fun register() {
         command(name = "fly", permission = "fireflyx.command.fly") {
-            dynamic(optional = true, commit = "player") {
+            dynamic(optional = true, comment = "player") {
                 suggestion<ProxyCommandSender>(uncheck = true) { _, _ ->
                     onlinePlayers().map { it.name }
                 }

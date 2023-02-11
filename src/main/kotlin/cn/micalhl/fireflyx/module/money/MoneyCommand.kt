@@ -28,17 +28,17 @@ object MoneyCommand {
         // /<eco/money> <give/take/set> <player> <amount>
         command(name = "money", aliases = listOf("eco", "economy")) {
             // give/take/set context.argument(-2)
-            dynamic(commit = "give/take/set") {
+            dynamic(comment = "give/take/set") {
                 suggestion<ProxyCommandSender> { _, _ ->
                     listOf("give", "take", "set")
                 }
                 // player context.argument(-1)
-                dynamic(commit = "player") {
+                dynamic(comment = "player") {
                     suggestion<ProxyCommandSender>(uncheck = true) { _, _ ->
                         onlinePlayers().map { it.name }
                     }
                     // amount context.argument(0)
-                    dynamic(commit = "amount") {
+                    dynamic(comment = "amount") {
                         execute<ProxyCommandSender> { user, context, _ ->
                             val target = plugin().server.getPlayerExact(context.argument(-1))
                             if (target == null) {
@@ -73,7 +73,7 @@ object MoneyCommand {
             }
         }
         command(name = "balance", aliases = listOf("bal")) {
-            dynamic(optional = true, commit = "player") {
+            dynamic(optional = true, comment = "player") {
                 suggestion<ProxyCommandSender>(uncheck = true) { _, _ ->
                     onlinePlayers.filter { it.hasAccount() }.map { it.name }
                 }
@@ -101,11 +101,11 @@ object MoneyCommand {
             }
         }
         command("pay") {
-            dynamic(commit = "player") {
+            dynamic(comment = "player") {
                 suggestion<ProxyPlayer>(uncheck = true) { _, _ ->
                     onlinePlayers().map { it.name }
                 }
-                dynamic(commit = "money") {
+                dynamic(comment = "money") {
                     execute<ProxyPlayer> { user, context, _ ->
                         val name = context.argument(-1)
                         val money = context.argument(0)
